@@ -77,13 +77,11 @@ flutter:
     - family: Charmonman
       fonts:
         - asset: assets/fonts/Charmonman-Bold.ttf
-        - asset: assets/fonts/Charmonman-Regular.ttf
-          weight: 700
-    
-    -family: K2D
+        - asset: assets/fonts/Charmonman-Regular.ttf    
+    - family: K2D
       fonts:
-        -asset: assets/fonts/K2D-Bold.ttf
-        -asset: assets/fonts/K2D-Regular.ttf
+        - asset: assets/fonts/K2D-Bold.ttf
+        - asset: assets/fonts/K2D-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
