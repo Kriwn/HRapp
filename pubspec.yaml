@@ -80,7 +80,7 @@ flutter:
         - asset: assets/fonts/Charmonman-Regular.ttf
           weight: 700
     
-    -family: K2D
+    - family: K2D
       fonts:
         -asset: assets/fonts/K2D-Bold.ttf
         -asset: assets/fonts/K2D-Regular.ttf
