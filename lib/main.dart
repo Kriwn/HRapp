@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'HR App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFFFFE8DF)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 255, 232, 223)),
         useMaterial3: true,
       ),
       home: const Login(),

@@ -13,12 +13,13 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 255, 232, 223),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
                 Icon(Icons.person),
@@ -30,17 +31,20 @@ class _LoginState extends State<Login> {
                     fontWeight: FontWeight.bold
                   ),
                 ),
-                TextField(
-                  controller: usernameController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Username",
-                  ),
-                ),
             ],
           ),
-          SizedBox(height: 20,),
-          Row(
+          Container(
+            padding: EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            child: TextField(
+              controller: usernameController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Username",
+              ),
+            ),
+          ),
+          const SizedBox(height: 20,),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
                 Icon(Icons.lock),
@@ -52,14 +56,24 @@ class _LoginState extends State<Login> {
                     fontWeight: FontWeight.bold
                   ),
                 ),
-                TextField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Password",
-                  ),
-                ),
             ],
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            child: TextField(
+              controller: passwordController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Password",
+              ),
+            ),
+          ),
+          const SizedBox(height: 50,),
+          FloatingActionButton(
+            child: const Text("Login"),
+            onPressed: () => {
+
+            }
           ),
         ],
       ),
