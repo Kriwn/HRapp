@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hr/views/SettingsView.dart';
 import 'package:hr/views/User/ClockInView.dart';
 import 'package:hr/views/User/HistoryView.dart';
-import 'package:intl/intl.dart';
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({super.key});
