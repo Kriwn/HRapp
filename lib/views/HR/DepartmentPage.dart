@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Summary extends StatelessWidget {
-  const Summary({Key? key}) : super(key: key);
-  
+class DepartmentList extends StatelessWidget{
+  const DepartmentList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;

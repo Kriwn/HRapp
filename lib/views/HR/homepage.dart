@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './Summary.dart';
+import 'package:hr/views/HR/DepartmentPage.dart';
+import 'SummaryPage.dart';
 
 class HrHomepage extends StatefulWidget{
   const HrHomepage({super.key});
@@ -12,7 +13,8 @@ class HrHomepage extends StatefulWidget{
 class _HrHomepage extends State<HrHomepage> {
     int indextBottomNav = 0;
     List WidgetOption = [
-      Summary(),
+      SummaryList(),
+      DepartmentList(),
     ];
 
   @override
