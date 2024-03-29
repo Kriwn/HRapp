@@ -87,7 +87,10 @@ class _SignInState extends State<SignIn> {
               FloatingActionButton( //Sign in button
                 child: const Text("Sign in"),
                 onPressed: () => {
-
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HrHomepage()),
+                  )
                 }
               ),
             ],
