@@ -17,12 +17,27 @@ class SummaryList extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          Text(
-            "Screen Height: $screenHeight",
-            style: const TextStyle(
-              fontSize: 16,
+          Padding(padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+          child: Container(
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(20),
+              color: const Color.fromARGB(255, 240, 240, 240),  
+              boxShadow: [
+                BoxShadow(color: Colors.grey.withOpacity(0.7),
+                spreadRadius: 4,
+                blurRadius: 5,
+                offset: const Offset(0,1.75))
+              ]
             ),
-          ),
+          
+            height: 0.7 * screenHeight,
+            child:  ListView(
+              // need some  Sumary department
+            ),
+          )
+          )
         ],
       );
   }
