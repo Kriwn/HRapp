@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
 
-class NewEmployee extends StatelessWidget {
-  const NewEmployee({super.key});
+class Settings extends StatefulWidget {
+  const Settings({super.key});
 
+  @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
 
-
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 247, 197, 186),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              IconButton(
+                onPressed: () => {
+                  Navigator.pop(context)
+                }, 
+                icon: Icon(Icons.arrow_back_ios)
+              )
+            ],
+          ),
           const Text(
-            "New Employee",
+            "Settings",
             style: TextStyle(
               fontSize: 20,
             ),
@@ -21,7 +38,7 @@ class NewEmployee extends StatelessWidget {
           Padding(padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
           child: Container(
             clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
+            decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(20),
               color: const Color.fromARGB(255, 240, 240, 240),  
@@ -32,13 +49,15 @@ class NewEmployee extends StatelessWidget {
                 offset: const Offset(0,1.75))
               ]
             ),
+          
             height: 0.7 * screenHeight,
-            child:  ListView(
-              // need some  Sumary department
-            ),
+            child: Container(
+              
+            )
           )
           )
         ],
-      );
+      ),
+    );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr/views/Account/SignInPage.dart';
+import 'package:hr/views/Account/SignInView.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});

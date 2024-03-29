@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/SettingsView.dart';
+import 'package:hr/views/User/ClockInView.dart';
+import 'package:hr/views/User/HistoryView.dart';
 import 'package:intl/intl.dart';
 
 class UserHomePage extends StatefulWidget {
@@ -9,12 +12,16 @@ class UserHomePage extends StatefulWidget {
 }
 
 class _UserHomePageState extends State<UserHomePage> {
-  String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(DateTime.now());
+  int indextBottomNav = 0;
+  List WidgetOption = [
+    const ClockIn(),
+    const History(),
+    // const DepartmentList(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 232, 223),
       appBar: AppBar(
         title: const Text("User Home Page"),
         actions: [
@@ -29,35 +36,32 @@ class _UserHomePageState extends State<UserHomePage> {
             ),
             iconSize: 50,
             onPressed: () => {
-              
+              Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => const Settings()),
+              )
             },
           )
         ],
       ),
-      body: Container(
-        color: const Color.fromARGB(255, 240, 240, 240),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text("Clock In", style: TextStyle(fontSize: 36),),
-            IconButton(
-              onPressed: () => {
-
-              }, 
-              icon: const Icon(Icons.check_circle, color: Colors.green, size: 250,),
-            ),
-            Text(formattedDate),
-            const SizedBox(height: 5,),
-            const Text("GPS :", style: TextStyle(fontSize: 36),),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("", style: TextStyle(fontSize: 36),),
-              ],
-            ),
-          ],
-        ),
+      backgroundColor: const Color.fromARGB(255, 247, 197, 186),
+      body: Center(
+        child: WidgetOption[indextBottomNav],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color.fromARGB(255, 245, 187, 170),
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.check_rounded), label: 'Clock In'),
+          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
+          // BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Departments'),
+          // Add more BottomNavigationBarItems as needed
+        ],
+        currentIndex: indextBottomNav,
+        onTap: (value) {
+          setState(() {
+            indextBottomNav = value;
+          });
+        },
       ),
     );
   }
