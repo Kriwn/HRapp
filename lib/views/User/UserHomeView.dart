@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hr/controllers/PageList.dart';
 import 'package:hr/views/SettingsView.dart';
 import 'package:hr/views/User/ClockInView.dart';
 import 'package:hr/views/User/HistoryView.dart';
+import 'package:hr/views/Account/SignInView.dart';
+
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({super.key});
@@ -12,6 +15,7 @@ class UserHomePage extends StatefulWidget {
 
 class _UserHomePageState extends State<UserHomePage> {
   int indextBottomNav = 0;
+  PageList pageList = PageList();
   List WidgetOption = [
     const ClockIn(),
     const History(),
@@ -35,10 +39,7 @@ class _UserHomePageState extends State<UserHomePage> {
             ),
             iconSize: 50,
             onPressed: () => {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => const Settings()),
-              )
+              pageList.routeTo(context, "Settings")
             },
           )
         ],

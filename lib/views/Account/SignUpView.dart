@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr/views/components/AccountTextField.dart';
-import 'package:hr/views/Account/SignInView.dart';
+import 'package:hr/controllers/PageList.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -10,6 +10,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  PageList pageList = PageList();
   TextEditingController emailController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -35,10 +36,7 @@ class _SignUpState extends State<SignUp> {
             backgroundColor: const Color.fromARGB(255, 30, 95, 116),
             child: const Text("Sign up", style: TextStyle(color: Colors.white),),
             onPressed: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignIn()),
-              )
+              pageList.routeTo(context, "SignIn")
             }
           ),
         ],

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr/views/Account/ResetPasswordPage.dart';
-import 'package:hr/views/User/UserHomeView.dart';
 import 'package:hr/views/components/AccountTextField.dart';
-import 'package:hr/views/Account/SignUpView.dart';
+import 'package:hr/controllers/PageList.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -12,6 +10,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  PageList pageList = PageList();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -34,10 +33,7 @@ class _SignInState extends State<SignIn> {
                 backgroundColor: const Color.fromARGB(255, 30, 95, 116),
                 child: const Text("Sign up", style: TextStyle(color: Colors.white),),
                 onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SignUp()),
-                  )
+                  pageList.routeTo(context, "SignUp")
                 }
               ),
               const SizedBox(width: 50,),
@@ -46,12 +42,13 @@ class _SignInState extends State<SignIn> {
                 backgroundColor: const Color.fromARGB(255, 30, 95, 116),
                 child: const Text("Sign in", style: TextStyle(color: Colors.white),),
                 onPressed: () => {
-                  Navigator.push(
-                    context,
+                  // Navigator.push(
+                    // context,
                     // MaterialPageRoute(builder: (context) => const HrHomepage()),
                     // MaterialPageRoute(builder: (context) => const Settings()),
-                    MaterialPageRoute(builder: (context) => const UserHomePage()),
-                  )
+                    // MaterialPageRoute(builder: (context) => const UserHomePage()),
+                  // )
+                    pageList.routeTo(context, "UserHome")
                 }
               ),
             ],
@@ -59,10 +56,7 @@ class _SignInState extends State<SignIn> {
           const SizedBox(height: 30,),
           TextButton(
             onPressed: () => {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => const ResetPassword()),
-              )
+            pageList.routeTo(context, "ResetPassword")
             }, 
             child: const Text("Can’t remember password ?\n          Reset password.", style: TextStyle(color: Color.fromARGB(255, 136, 136, 136), fontSize: 16),)
           )

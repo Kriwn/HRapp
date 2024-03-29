@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr/views/Account/SignInView.dart';
+import 'package:hr/controllers/PageList.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
@@ -9,6 +9,7 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
+  PageList pageList = PageList();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -100,10 +101,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             backgroundColor: const Color.fromARGB(255, 30, 95, 116),
             child: const Text("Reset", style: TextStyle(color: Colors.white),),
             onPressed: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignIn()),
-              )
+                pageList.routeTo(context, "SignIn")
             }
           ),
         ],
