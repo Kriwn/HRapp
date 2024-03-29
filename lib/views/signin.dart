@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _LoginState extends State<Login> {
+class _SignInState extends State<SignIn> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 232, 223),
+      backgroundColor: const Color.fromARGB(255, 255, 232, 223),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
             ],
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
             child: TextField(
               controller: usernameController,
               decoration: const InputDecoration(
@@ -59,7 +59,7 @@ class _LoginState extends State<Login> {
             ],
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
             child: TextField(
               controller: passwordController,
               decoration: const InputDecoration(
@@ -69,12 +69,24 @@ class _LoginState extends State<Login> {
             ),
           ),
           const SizedBox(height: 50,),
-          FloatingActionButton(
-            child: const Text("Login"),
-            onPressed: () => {
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FloatingActionButton( //Sign up button
+                child: const Text("Sign up"),
+                onPressed: () => {
+                  
+                }
+              ),
+              const SizedBox(width: 50,),
+              FloatingActionButton( //Sign in button
+                child: const Text("Sign in"),
+                onPressed: () => {
 
-            }
-          ),
+                }
+              ),
+            ],
+          )
         ],
       ),
     );
