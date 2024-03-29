@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:hr/views/HR/DepartmentPage.dart';
+import 'DepartmentPage.dart';
+import 'Newemployee.dart';
 import 'SummaryPage.dart';
 
-class HrHomepage extends StatefulWidget{
+class HrHomepage extends StatefulWidget {
   const HrHomepage({super.key});
-  
+
   @override
   State<HrHomepage> createState() => _HrHomepage();
 }
 
-
 class _HrHomepage extends State<HrHomepage> {
   int indextBottomNav = 0;
   List WidgetOption = [
-    SummaryList(),
-    DepartmentList(),
+    const SummaryList(),
+    const NewEmployee(),
+    const DepartmentList(),
   ];
 
   @override
@@ -24,13 +25,15 @@ class _HrHomepage extends State<HrHomepage> {
         backgroundColor: const Color.fromARGB(83, 151, 193, 1),
         title: const Text("Test"),
       ),
+      backgroundColor: const Color.fromARGB(255, 247, 197, 186),
       body: Center(
         child: WidgetOption[indextBottomNav],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 247, 197, 186),
+        backgroundColor: const Color.fromARGB(255, 245, 187, 170),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Summary'),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add employee'),
           BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Departments'),
           // Add more BottomNavigationBarItems as needed
         ],

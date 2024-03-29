@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DepartmentList extends StatelessWidget{
-  const DepartmentList({Key? key}) : super(key: key);
+class NewEmployee extends StatelessWidget {
+  const NewEmployee({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class DepartmentList extends StatelessWidget{
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            "Department",
+            "New Employee",
             style: TextStyle(
               fontSize: 20,
             ),
