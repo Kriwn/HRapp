@@ -9,6 +9,7 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   
@@ -20,6 +21,31 @@ class _ResetPasswordState extends State<ResetPassword> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+                Icon(Icons.mail),
+                Text(
+                  "E-Mail", 
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: "Charmonman", 
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
+            child: TextField(
+              controller: emailController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "E-Mail",
+              ),
+            ),
+          ),
+          const SizedBox(height: 20,),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

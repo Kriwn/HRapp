@@ -107,7 +107,7 @@ class _SignInState extends State<SignIn> {
                 MaterialPageRoute(builder: (context) => const ResetPassword()),
               )
             }, 
-            child: const Text("Can’t remember password ?\nReset password.", style: TextStyle(color: Color.fromARGB(255, 136, 136, 136), fontSize: 16),)
+            child: const Text("Can’t remember password ?\n          Reset password.", style: TextStyle(color: Color.fromARGB(255, 136, 136, 136), fontSize: 16),)
           )
         ],
       ),
