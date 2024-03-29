@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr/views/Account/ResetPasswordPage.dart';
 import 'package:hr/views/SettingsView.dart';
 import 'package:hr/views/User/UserHomeView.dart';
+import 'package:hr/views/components/AccountTextField.dart';
 import '../HR/HomepageView.dart';
 import 'package:hr/views/Account/SignUpView.dart';
 
@@ -24,55 +25,9 @@ class _SignInState extends State<SignIn> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                Icon(Icons.person),
-                Text(
-                  "Username", 
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Charmonman", 
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
-            child: TextField(
-              controller: usernameController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Username",
-              ),
-            ),
-          ),
+          AccountTextField(const Icon(Icons.person), 16, "Charmonman", FontWeight.bold, "Username", "Username", usernameController),
           const SizedBox(height: 20,),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                Icon(Icons.lock),
-                Text(
-                  "Password", 
-                  style: TextStyle(
-                    fontSize: 16, 
-                    fontFamily: "Charmonman", 
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
-            child: TextField(
-              controller: passwordController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Password",
-              ),
-            ),
-          ),
+          AccountTextField(const Icon(Icons.lock), 16, "Charmonman", FontWeight.bold, "Password", "Password", passwordController),
           const SizedBox(height: 30,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

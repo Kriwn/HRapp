@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/components/RowTextField.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -11,6 +12,10 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    TextEditingController emailController = TextEditingController();
+    TextEditingController usernameController = TextEditingController();
+    TextEditingController nameController = TextEditingController();
+    TextEditingController phoneNoController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 247, 197, 186),
@@ -51,8 +56,17 @@ class _SettingsState extends State<Settings> {
             ),
           
             height: 0.7 * screenHeight,
-            child: Container(
-              
+            child: Column(
+              children: [
+                RowTextField(16, "K2D", FontWeight.bold, "Name", "Name", nameController),
+                const SizedBox(height: 20,),
+                RowTextField(16, "K2D", FontWeight.bold, "Username", "Username", usernameController),
+                const SizedBox(height: 20,),
+                RowTextField(16, "K2D", FontWeight.bold, "E-Mail", "E-Mail", emailController),
+                const SizedBox(height: 20,),
+                RowTextField(16, "K2D", FontWeight.bold, "Phone no.", "Phone no.", phoneNoController),
+                const SizedBox(height: 20,),
+              ],
             )
           )
           )
