@@ -7,15 +7,15 @@ class HrHomepage extends StatefulWidget{
   
   @override
   State<HrHomepage> createState() => _HrHomepage();
-  
 }
 
+
 class _HrHomepage extends State<HrHomepage> {
-    int indextBottomNav = 0;
-    List WidgetOption = [
-      SummaryList(),
-      DepartmentList(),
-    ];
+  int indextBottomNav = 0;
+  List WidgetOption = [
+    SummaryList(),
+    DepartmentList(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +27,20 @@ class _HrHomepage extends State<HrHomepage> {
       body: Center(
         child: WidgetOption[indextBottomNav],
       ),
-
       bottomNavigationBar: BottomNavigationBar(
-      backgroundColor: const Color.fromARGB(255, 247, 197, 186),
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Summary'),
-      ],
-      currentIndex: indextBottomNav,
-      onTap: ((value) => ((){
-        indextBottomNav = value;
-      })),
-      )
+        backgroundColor: const Color.fromARGB(255, 247, 197, 186),
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Summary'),
+          BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Departments'),
+          // Add more BottomNavigationBarItems as needed
+        ],
+        currentIndex: indextBottomNav,
+        onTap: (value) {
+          setState(() {
+            indextBottomNav = value;
+          });
+        },
+      ),
     );
   }
 }

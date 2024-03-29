@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './HR/homepage.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -13,16 +14,17 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 255, 232, 223),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-                const Icon(Icons.person),
-                const Text(
+                Icon(Icons.person),
+                Text(
                   "Username", 
                   style: TextStyle(
                     fontSize: 16,
@@ -30,21 +32,24 @@ class _LoginState extends State<Login> {
                     fontWeight: FontWeight.bold
                   ),
                 ),
-                TextField(
-                  controller: usernameController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Username",
-                  ),
-                ),
             ],
           ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            child: TextField(
+              controller: usernameController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Username",
+              ),
+            ),
+          ),
           const SizedBox(height: 20,),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-                const Icon(Icons.lock),
-                const Text(
+                Icon(Icons.lock),
+                Text(
                   "Password", 
                   style: TextStyle(
                     fontSize: 16, 
@@ -52,14 +57,27 @@ class _LoginState extends State<Login> {
                     fontWeight: FontWeight.bold
                   ),
                 ),
-                TextField(
-                  controller: passwordController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Password",
-                  ),
-                ),
             ],
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            child: TextField(
+              controller: passwordController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Password",
+              ),
+            ),
+          ),
+          const SizedBox(height: 50,),
+          FloatingActionButton(
+            child: const Text("Login"),
+            onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HrHomepage()),
+                )
+            }
           ),
         ],
       ),
