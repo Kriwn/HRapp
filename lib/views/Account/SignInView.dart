@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr/views/Account/ResetPasswordPage.dart';
-import 'package:hr/views/SettingsView.dart';
 import 'package:hr/views/User/UserHomeView.dart';
 import 'package:hr/views/components/AccountTextField.dart';
-import '../HR/HomepageView.dart';
 import 'package:hr/views/Account/SignUpView.dart';
 
 class SignIn extends StatefulWidget {
