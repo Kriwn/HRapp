@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr/views/Account/resetpassword.dart';
+import 'package:hr/views/User/userHomePage.dart';
 import '../HR/homepage.dart';
 import 'package:hr/views/Account/signup.dart';
 
@@ -93,7 +94,8 @@ class _SignInState extends State<SignIn> {
                 onPressed: () => {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HrHomepage()),
+                    // MaterialPageRoute(builder: (context) => const HrHomepage()),
+                    MaterialPageRoute(builder: (context) => const UserHomePage()),
                   )
                 }
               ),

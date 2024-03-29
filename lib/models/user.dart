@@ -2,6 +2,7 @@ import 'package:hr/models/history.dart';
 
 class User {
   late int id;
+  late String urlImage;
   late String firstName;
   late String lastName;
   late String phoneNo;
