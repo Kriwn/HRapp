@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/components/AccountButton.dart';
 import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
 
@@ -24,21 +25,15 @@ class _SignUpState extends State<SignUp> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          AccountTextField(const Icon(Icons.mail), 16, "Charmonman", FontWeight.bold, "E-Mail", "E-Mail", emailController),
+          AccountTextField(const Icon(Icons.mail), 16, "WorkSans", FontWeight.bold, "E-Mail", "E-Mail", emailController),
           const SizedBox(height: 20,),
-          AccountTextField(const Icon(Icons.person), 16, "Charmonman", FontWeight.bold, "Username", "Username", usernameController),
+          AccountTextField(const Icon(Icons.person), 16, "WorkSans", FontWeight.bold, "Username", "Username", usernameController),
           const SizedBox(height: 20,),
-          AccountTextField(const Icon(Icons.lock), 16, "Charmonman", FontWeight.bold, "Password", "Password", passwordController),
+          AccountTextField(const Icon(Icons.lock), 16, "WorkSans", FontWeight.bold, "Password", "Password", passwordController),
           const SizedBox(height: 20,),
-          AccountTextField(const Icon(Icons.lock), 16, "Charmonman", FontWeight.bold, "Confirm Password", "Confirm Password", confirmPasswordController),
+          AccountTextField(const Icon(Icons.lock), 16, "WorkSans", FontWeight.bold, "Confirm Password", "Confirm Password", confirmPasswordController),
           const SizedBox(height: 50,),
-          FloatingActionButton(
-            backgroundColor: const Color.fromARGB(255, 30, 95, 116),
-            child: const Text("Sign up", style: TextStyle(color: Colors.white),),
-            onPressed: () => {
-              pageList.routeTo(context, "SignIn")
-            }
-          ),
+          AccountButton("SignIn", Colors.white, "Sign up", const Color.fromARGB(255, 30, 95, 116)),
         ],
       ),
     );

@@ -28,7 +28,7 @@ class PageList {
 
     //User And Hr   History
     pageList.add(PageData("Settings", const Settings()));
-    pageList.add(PageData("ClockInView", const ClockIn()));
+    pageList.add(PageData("ClockIn", const ClockIn()));
 
 
     //HR 

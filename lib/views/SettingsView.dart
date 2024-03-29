@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/components/IconPicture.dart';
 import 'package:hr/views/components/RowTextField.dart';
 
 class Settings extends StatefulWidget {
@@ -58,6 +59,8 @@ class _SettingsState extends State<Settings> {
             height: 0.7 * screenHeight,
             child: Column(
               children: [
+                IconPicture(200, 'assets/images/bigprk.png', "S"),
+                const SizedBox(height: 40,),
                 RowTextField(16, "K2D", FontWeight.bold, "Name", "Name", nameController),
                 const SizedBox(height: 20,),
                 RowTextField(16, "K2D", FontWeight.bold, "Username", "Username", usernameController),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/components/AccountButton.dart';
 import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
 
@@ -22,35 +23,21 @@ class _SignInState extends State<SignIn> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          AccountTextField(const Icon(Icons.person), 16, "Charmonman", FontWeight.bold, "Username", "Username", usernameController),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(360),
+            child: Image.asset('assets/images/bigBig.png', fit: BoxFit.cover,),
+          ),
+          AccountTextField(const Icon(Icons.person), 16, "WorkSans", FontWeight.bold, "Username", "Username", usernameController),
           const SizedBox(height: 20,),
-          AccountTextField(const Icon(Icons.lock), 16, "Charmonman", FontWeight.bold, "Password", "Password", passwordController),
+          AccountTextField(const Icon(Icons.lock), 16, "WorkSans", FontWeight.bold, "Password", "Password", passwordController),
           const SizedBox(height: 30,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FloatingActionButton( //Sign up button
-                backgroundColor: const Color.fromARGB(255, 30, 95, 116),
-                child: const Text("Sign up", style: TextStyle(color: Colors.white),),
-                onPressed: () => {
-                  pageList.routeTo(context, "SignUp")
-                }
-              ),
+              AccountButton("SignUp", Colors.white, "Sign up", const Color.fromARGB(255, 30, 95, 116)),
               const SizedBox(width: 50,),
               // Need to add If-Else statement (User or HR)
-              FloatingActionButton( //Sign in button
-                backgroundColor: const Color.fromARGB(255, 30, 95, 116),
-                child: const Text("Sign in", style: TextStyle(color: Colors.white),),
-                onPressed: () => {
-                  // Navigator.push(
-                    // context,
-                    // MaterialPageRoute(builder: (context) => const HrHomepage()),
-                    // MaterialPageRoute(builder: (context) => const Settings()),
-                    // MaterialPageRoute(builder: (context) => const UserHomePage()),
-                  // )
-                    pageList.routeTo(context, "UserHome")
-                }
-              ),
+              AccountButton("UserHome", Colors.white, "Sign in", const Color.fromARGB(255, 30, 95, 116)),
             ],
           ),
           const SizedBox(height: 30,),

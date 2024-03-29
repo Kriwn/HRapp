@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/components/AccountButton.dart';
+import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -22,88 +24,13 @@ class _ResetPasswordState extends State<ResetPassword> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                Icon(Icons.mail),
-                Text(
-                  "E-Mail", 
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Charmonman", 
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
-            child: TextField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "E-Mail",
-              ),
-            ),
-          ),
+          AccountTextField(const Icon(Icons.mail), 16, "WorkSans", FontWeight.bold, "E-Mail", "E-Mail", emailController),       
           const SizedBox(height: 20,),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                Icon(Icons.lock),
-                Text(
-                  "Password", 
-                  style: TextStyle(
-                    fontSize: 16, 
-                    fontFamily: "Charmonman", 
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
-            child: TextField(
-              controller: passwordController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "New Password",
-              ),
-            ),
-          ),
+          AccountTextField(const Icon(Icons.lock), 16, "WorkSans", FontWeight.bold, "Password", "Password", passwordController),
           const SizedBox(height: 20,),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                Icon(Icons.lock),
-                Text(
-                  "Confirm Password", 
-                  style: TextStyle(
-                    fontSize: 16, 
-                    fontFamily: "Charmonman", 
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
-            child: TextField(
-              controller: confirmPasswordController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Confirm Your Password",
-              ),
-            ),
-          ),
+          AccountTextField(const Icon(Icons.lock), 16, "WorkSans", FontWeight.bold, "Confirm Password", "Confirm Password", confirmPasswordController),
           const SizedBox(height: 50,),
-          FloatingActionButton(
-            backgroundColor: const Color.fromARGB(255, 30, 95, 116),
-            child: const Text("Reset", style: TextStyle(color: Colors.white),),
-            onPressed: () => {
-                pageList.routeTo(context, "SignIn")
-            }
-          ),
+          AccountButton("SignIn", Colors.white, "Reset", const Color.fromARGB(255, 30, 95, 116)),
         ],
       ),
     );
