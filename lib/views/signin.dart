@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/signup.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -75,10 +76,14 @@ class _SignInState extends State<SignIn> {
               FloatingActionButton( //Sign up button
                 child: const Text("Sign up"),
                 onPressed: () => {
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignUp()),
+                  )
                 }
               ),
               const SizedBox(width: 50,),
+              // Need to add If-Else statement (User or HR)
               FloatingActionButton( //Sign in button
                 child: const Text("Sign in"),
                 onPressed: () => {

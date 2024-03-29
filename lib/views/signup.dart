@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/signin.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -124,7 +125,10 @@ class _SignUpState extends State<SignUp> {
           FloatingActionButton(
             child: const Text("Sign up"),
             onPressed: () => {
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SignIn()),
+              )
             }
           ),
         ],
