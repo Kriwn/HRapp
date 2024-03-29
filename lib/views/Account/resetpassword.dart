@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import './HR/homepage.dart';
-import 'package:hr/views/signup.dart';
+import 'package:hr/views/Account/signin.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class ResetPassword extends StatefulWidget {
+  const ResetPassword({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<ResetPassword> createState() => _ResetPasswordState();
 }
 
-class _SignInState extends State<SignIn> {
-  TextEditingController usernameController = TextEditingController();
+class _ResetPasswordState extends State<ResetPassword> {
   TextEditingController passwordController = TextEditingController();
-
+  TextEditingController confirmPasswordController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,31 +20,6 @@ class _SignInState extends State<SignIn> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                Icon(Icons.person),
-                Text(
-                  "Username", 
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Charmonman", 
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
-            child: TextField(
-              controller: usernameController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Username",
-              ),
-            ),
-          ),
-          const SizedBox(height: 20,),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -61,41 +35,51 @@ class _SignInState extends State<SignIn> {
             ],
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
             child: TextField(
               controller: passwordController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: "Password",
+                hintText: "New Password",
+              ),
+            ),
+          ),
+          const SizedBox(height: 20,),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+                Icon(Icons.lock),
+                Text(
+                  "Confirm Password", 
+                  style: TextStyle(
+                    fontSize: 16, 
+                    fontFamily: "Charmonman", 
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
+            child: TextField(
+              controller: confirmPasswordController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Confirm Your Password",
               ),
             ),
           ),
           const SizedBox(height: 50,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FloatingActionButton( //Sign up button
-                child: const Text("Sign up"),
-                onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SignUp()),
-                  )
-                }
-              ),
-              const SizedBox(width: 50,),
-              // Need to add If-Else statement (User or HR)
-              FloatingActionButton( //Sign in button
-                child: const Text("Sign in"),
-                onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HrHomepage()),
-                  )
-                }
-              ),
-            ],
-          )
+          FloatingActionButton(
+            backgroundColor: const Color.fromARGB(255, 30, 95, 116),
+            child: const Text("Reset", style: TextStyle(color: Colors.white),),
+            onPressed: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SignIn()),
+              )
+            }
+          ),
         ],
       ),
     );

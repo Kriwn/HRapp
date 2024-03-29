@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr/views/signin.dart';
+import 'package:hr/views/Account/signin.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -25,7 +25,7 @@ class _SignUpState extends State<SignUp> {
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-                Icon(Icons.person),
+                Icon(Icons.mail),
                 Text(
                   "E-Mail", 
                   style: TextStyle(
@@ -37,7 +37,7 @@ class _SignUpState extends State<SignUp> {
             ],
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
             child: TextField(
               controller: emailController,
               decoration: const InputDecoration(
@@ -62,7 +62,7 @@ class _SignUpState extends State<SignUp> {
             ],
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
             child: TextField(
               controller: usernameController,
               decoration: const InputDecoration(
@@ -87,7 +87,7 @@ class _SignUpState extends State<SignUp> {
             ],
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
             child: TextField(
               controller: passwordController,
               decoration: const InputDecoration(
@@ -112,7 +112,7 @@ class _SignUpState extends State<SignUp> {
             ],
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+            padding: const EdgeInsets.fromLTRB(100.0, 5.0, 100.0, 0),
             child: TextField(
               controller: confirmPasswordController,
               decoration: const InputDecoration(
@@ -123,7 +123,8 @@ class _SignUpState extends State<SignUp> {
           ),
           const SizedBox(height: 50,),
           FloatingActionButton(
-            child: const Text("Sign up"),
+            backgroundColor: const Color.fromARGB(255, 30, 95, 116),
+            child: const Text("Sign up", style: TextStyle(color: Colors.white),),
             onPressed: () => {
               Navigator.push(
                 context,
