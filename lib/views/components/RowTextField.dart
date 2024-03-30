@@ -29,7 +29,9 @@ class RowTextField extends StatelessWidget {
             width: 10,
           ),
           Flexible(
-            child: TextField(
+            child: TextFormField(
+              validator: (value) =>
+                value!.isEmpty ? 'Input cannot be empty!' : null,
               controller: textController,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.only(top: 5),
