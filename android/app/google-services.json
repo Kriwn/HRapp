@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "577491611644",
+    "project_id": "hrapp-f538c",
+    "storage_bucket": "hrapp-f538c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577491611644:android:59ff9311c743739bed4c79",
+        "android_client_info": {
+          "package_name": "com.example.hr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdDjIX5ntr84pb0p-Nglddvhvh5BBvWXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
