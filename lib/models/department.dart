@@ -1,4 +1,29 @@
 class Department {
-  late int id; //PK
-  late String name;
+  late int _id; //PK
+  late String _name;
+
+  Department({required int id,required String name}){
+    _id = id;
+    _name = name;
+  }
+
+  // Getter
+  int getId(){
+    return _id;
+  }
+
+  String getName(){
+    return _name;
+  }
+
+  // Setter
+
+  void setID(int value){
+    _id = value;
+  }
+
+  void setName(String name)
+  {
+    _name = name;
+  }
 }

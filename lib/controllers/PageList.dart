@@ -14,9 +14,6 @@ import 'package:hr/views/User/HistoryView.dart';
 import 'package:hr/views/User/UserHomeView.dart';
 
 
-
-
-
 class PageList {
   List<PageData> pageList = [];
 
