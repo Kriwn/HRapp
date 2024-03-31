@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/SignUpController.dart';
-import 'package:hr/views/components/AccountButton.dart';
-import 'package:hr/views/components/RowTextField.dart';
 import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
 import 'package:hr/services/Auth.dart';
