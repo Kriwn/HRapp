@@ -28,19 +28,7 @@ class AccountButton extends StatelessWidget {
           style: TextStyle(color: fontColor),
         ),
         onPressed: () => {
-              if (functionName == "SignIn")
-                {
-                  // Need to use controller to check Hr User
-                  pageList.routeTo(context, "UserHome")
-                }
-              else if (functionName == "goToSignIn")
-                {pageList.routeTo(context, "SignIn")}
-              else if (functionName == "SignUp")
-                {pageList.routeTo(context, "SignUp")}
-              else if (functionName == "Reset")
-                {pageList.routeTo(context, "ResetPassword")}
-              else
-                {print("not found function wa sus\n $functionName")}
-            });
+              
+      });
   }
 }

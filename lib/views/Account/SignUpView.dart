@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hr/controllers/SignUpController.dart';
 import 'package:hr/views/components/AccountButton.dart';
 import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
+import 'package:hr/services/Auth.dart';
+
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -11,12 +15,27 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  String? errorMessage = '';
+  String wrongInput = '';
   PageList pageList = PageList();
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+
+  Future<void> createUserWithEmailAndPassword() async {
+    try {
+      await Auth().createUserWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      SignUpController().addData(usernameController.text, emailController.text, 0, 0, 0);
+    } on FirebaseException catch (e) {
+      print("Cannot create account.");
+      setState(() {
+        errorMessage = e.message;
+      });
+    }
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -39,7 +58,30 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(height: 20,),
               AccountTextField(const Icon(Icons.lock), 16, "WorkSans", FontWeight.bold, "Confirm Password", "Confirm Password", confirmPasswordController),
               const SizedBox(height: 50,),
-              AccountButton("goToSignIn", Colors.white, "Sign up", const Color.fromARGB(255, 30, 95, 116)),
+              Text(
+              wrongInput,
+              style: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: "WorkSans",
+                  fontWeight: FontWeight.bold),
+              ),
+              FloatingActionButton.extended(
+                backgroundColor: const Color.fromARGB(255, 30, 95, 116),
+                label: const Text(
+                  "Sign up",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                  if (passwordController.text != confirmPasswordController.text) {
+                    setState(() {
+                      wrongInput = "'Password' and 'Confirm Password' do not correct.";
+                    });
+                  } else {
+                    await createUserWithEmailAndPassword();
+                    pageList.routeTo(context, "SignIn");
+                  }
+                }
+              ),
             ],
           ),
         ),

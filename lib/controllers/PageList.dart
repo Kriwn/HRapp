@@ -23,7 +23,7 @@ class PageList {
     pageList.add(PageData("SignUp", const SignUp()));
     pageList.add(PageData("ResetPassword", const ResetPassword()));
 
-    //User And Hr   History
+    //User And Hr History
     pageList.add(PageData("Settings", const Settings()));
     pageList.add(PageData("ClockIn", const ClockIn()));
 
