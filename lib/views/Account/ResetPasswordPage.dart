@@ -32,8 +32,14 @@ class _ResetPasswordState extends State<ResetPassword> {
                 const SizedBox(
                   height: 20,
                 ),
-                AccountTextField(const Icon(Icons.lock), 16, "WorkSans",
-                    FontWeight.bold, "Password", "Password", passwordController),
+                AccountTextField(
+                    const Icon(Icons.lock),
+                    16,
+                    "WorkSans",
+                    FontWeight.bold,
+                    "Password",
+                    "Password",
+                    passwordController),
                 const SizedBox(
                   height: 20,
                 ),
@@ -48,8 +54,13 @@ class _ResetPasswordState extends State<ResetPassword> {
                 const SizedBox(
                   height: 50,
                 ),
-                AccountButton("SignIn", Colors.white, "Reset",
-                    const Color.fromARGB(255, 30, 95, 116)),
+                FloatingActionButton.extended(
+                    backgroundColor: Color.fromARGB(255, 30, 95, 116),
+                    label: const Text(
+                      "Sign in",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () => {pageList.routeTo(context, "SignIn")}),
               ],
             ),
           ),
