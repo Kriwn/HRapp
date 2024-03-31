@@ -36,7 +36,7 @@ class _SignUpState extends State<SignUp> {
             const SizedBox(height: 20,),
             AccountTextField(const Icon(Icons.lock), 16, "WorkSans", FontWeight.bold, "Confirm Password", "Confirm Password", confirmPasswordController),
             const SizedBox(height: 50,),
-            AccountButton("SignIn", Colors.white, "Sign up", const Color.fromARGB(255, 30, 95, 116)),
+            AccountButton("login", Colors.white, "Sign up", const Color.fromARGB(255, 30, 95, 116)),
           ],
         ),
       ),

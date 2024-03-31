@@ -40,7 +40,7 @@ class _SignInState extends State<SignIn> {
                   AccountButton("SignUp", Colors.white, "Sign up", const Color.fromARGB(255, 30, 95, 116)),
                   const SizedBox(width: 50,),
                   // Need to add If-Else statement (User or HR)
-                  AccountButton("UserHome", Colors.white, "Sign in", const Color.fromARGB(255, 30, 95, 116)),
+                  AccountButton("SignIn", Colors.white, "Sign in", const Color.fromARGB(255, 30, 95, 116)),
                 ],
               ),
               const SizedBox(height: 30,),
