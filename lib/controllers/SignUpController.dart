@@ -9,14 +9,14 @@ class SignUpController {
   var collection = FirebaseFirestore.instanceFor(app: app).collection("User");
   var data;
 
-  addData(String username, String email, String phone, String name, String lastname) async {
+  addData(String username, String email, String phone, String name, String departmentID) async {
     final data1 = <String, dynamic>{
-      "username": username,
-      "email": email,
-      "phone": phone,
-      "name":  name,
-      "lastname": lastname,
-      "imageUrl" : "",
+      "Username": username,
+      "Email": email,
+      "Phone": phone,
+      "Name":  name,
+      "URL_Image" : "",
+      "Department_ID" : departmentID,
     };
     collection.doc(auth.currentUser!.uid).set(data1);
   }
