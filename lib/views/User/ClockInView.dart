@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class ClockIn extends StatefulWidget {
   const ClockIn({super.key});
@@ -9,7 +8,6 @@ class ClockIn extends StatefulWidget {
 }
 
 class _ClockInState extends State<ClockIn> {
-  String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(DateTime.now());
   
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,7 @@ class _ClockInState extends State<ClockIn> {
                   }, 
                   icon: const Icon(Icons.check_circle, color: Colors.green, size: 250,),
                 ),
-                Text(formattedDate),
+                // Text(formattedDate),
                 const SizedBox(height: 5,),
                 const Text("GPS :", style: TextStyle(fontSize: 36),),
                 const Row(

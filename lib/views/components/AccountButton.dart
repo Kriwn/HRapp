@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:hr/controllers/PageList.dart';
 
 class AccountButton extends StatelessWidget {
-  final String routeName;
+  String functionName;
   // final double fontSize;
   // final String fontFamily;
-  final Color fontColor;
+  Color fontColor;
   // final FontWeight fontWeight;
-  final String text;
-  final Color colorButton;
+  String text;
+  Color colorButton;
+  late String email;
+  late String password;
 
   // AccountButton(this.routeName, this.fontSize, this.fontFamily, this.fontColor, this.fontWeight, this.text, this.colorButton);
-  AccountButton(this.routeName, this.fontColor, this.text, this.colorButton);
+  AccountButton(this.functionName, this.fontColor, this.text, 
+    this.colorButton);
+
+  AccountButton.overloadWithEmailPassword(this.functionName, this.fontColor, this.text, 
+    this.colorButton, this.email, this.password);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,15 @@ class AccountButton extends StatelessWidget {
       backgroundColor: colorButton,
       label: Text(text, style: TextStyle(color: fontColor),),
       onPressed: () => {
-        PageList().routeTo(context, routeName)
+        if(functionName == "SignIn") {
+
+        } else if(functionName == "SignUp") {
+          
+        } else if(functionName == "Reset") {
+
+        } else {
+          print("not found function wa sus")
+        }
       }
     );
   }

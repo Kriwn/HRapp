@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/PageList.dart';
-import 'package:hr/views/SettingsView.dart';
 import 'package:hr/views/User/ClockInView.dart';
 import 'package:hr/views/User/HistoryView.dart';
-import 'package:hr/views/Account/SignInView.dart';
 import 'package:hr/views/components/IconPicture.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({super.key});
@@ -20,7 +17,6 @@ class _UserHomePageState extends State<UserHomePage> {
   List WidgetOption = [
     const ClockIn(),
     const History(),
-    // const DepartmentList(),
   ];
 
   @override
@@ -36,34 +32,6 @@ class _UserHomePageState extends State<UserHomePage> {
       body: Center(
         child: WidgetOption[indextBottomNav],
       ),
-      // Google Nav Bar
-      // bottomNavigationBar: Container(
-      //   color: const Color.fromARGB(255, 245, 187, 170),
-      //   child:  Padding(
-      //     padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
-      //     child: GNav(
-      //       backgroundColor: Color.fromARGB(255, 245, 187, 170),
-      //       color: Colors.black,
-      //       tabBackgroundColor: Colors.white,
-      //       gap: 2,
-      //       onTabChange: (index) {
-      //         setState(() {
-      //           indexBottomNavBar = WidgetOption[index]; 
-      //         });
-      //       },
-      //       tabs: const [
-      //         GButton(
-      //           icon: Icons.check_rounded,
-      //           text: "Clock In",
-      //         ),
-      //         GButton(
-      //           icon: Icons.history,
-      //           text: "History",
-      //         )
-      //       ]
-      //     ),
-      //   ),
-      // ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color.fromARGB(255, 245, 187, 170),
         items: const [
