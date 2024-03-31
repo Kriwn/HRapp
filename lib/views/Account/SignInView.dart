@@ -56,20 +56,14 @@ class _SignInState extends State<SignIn> {
                   const SizedBox(
                     width: 50,
                   ),
-                  const SizedBox(
-                    width: 50,
-                  ),
                   FloatingActionButton.extended(
                       backgroundColor: Color.fromARGB(255, 30, 95, 116),
                       label: const Text(
                         "Sign in",
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () => {pageList.routeTo(context, "SignIn")}),
-                  const SizedBox(
-                    width: 50,
+                      onPressed: () => {pageList.routeTo(context, "UserHome")}
                   ),
-                  // Need to add If-Else statement (User or HR)
                 ],
               ),
               const SizedBox(

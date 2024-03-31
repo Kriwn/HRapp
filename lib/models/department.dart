@@ -8,7 +8,7 @@ class Department {
   }
 
   // Getter
-  int getId(){
+  int getID(){
     return _id;
   }
 
@@ -17,7 +17,6 @@ class Department {
   }
 
   // Setter
-
   void setID(int value){
     _id = value;
   }

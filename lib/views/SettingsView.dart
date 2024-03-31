@@ -15,9 +15,9 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    TextEditingController emailController = TextEditingController();
-    TextEditingController usernameController = TextEditingController();
-    TextEditingController nameController = TextEditingController();
+    // TextEditingController emailController = TextEditingController();
+    // TextEditingController usernameController = TextEditingController();
+    // TextEditingController nameController = TextEditingController();
     TextEditingController phoneNoController = TextEditingController();
 
     return Scaffold(
@@ -63,18 +63,8 @@ class _SettingsState extends State<Settings> {
                           const SizedBox(
                             height: 40,
                           ),
-                          RowTextField(16, "K2D", FontWeight.bold, "Name",
-                              "Name", nameController),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          RowTextField(16, "K2D", FontWeight.bold, "Username",
-                              "Username", usernameController),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          RowTextField(16, "K2D", FontWeight.bold, "E-Mail",
-                              "E-Mail", emailController),
+                          // RowTextField(16, "K2D", FontWeight.bold, "E-Mail",
+                          //     "E-Mail", emailController),
                           const SizedBox(
                             height: 20,
                           ),

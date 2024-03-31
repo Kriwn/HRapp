@@ -1,16 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hr/firebase_options.dart';
 import 'views/Account/SignInView.dart';
 
 late final FirebaseApp app;
+late final FirebaseAuth auth;
+late final FirebaseFirestore fireStore;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  app = await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  FirebaseFirestore firestore = FirebaseFirestore.instanceFor(app: app);
+
+  app = await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  auth = FirebaseAuth.instanceFor(app: app);
+
+  fireStore = FirebaseFirestore.instanceFor(app: app);
+
+  fireStore.settings = const Settings(
+    persistenceEnabled: true,
+  );
   
-  // runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
