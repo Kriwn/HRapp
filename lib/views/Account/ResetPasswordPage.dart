@@ -48,7 +48,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 const SizedBox(
                   height: 50,
                 ),
-                AccountButton("SignIn", Colors.white, "Reset",
+                AccountButton("goToSignIn", Colors.white, "Reset",
                     const Color.fromARGB(255, 30, 95, 116)),
               ],
             ),

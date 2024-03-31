@@ -13,7 +13,7 @@ class DepartmentList<T extends Department> {
   
   T? findByDepartmentId(int id) {
     for (var department in _departments) {
-      if (department.getId() == id) {
+      if (department.getID() == id) {
         return department;
       }
     }

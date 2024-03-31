@@ -8,7 +8,7 @@ class Department {
   }
 
   // Getter
-  int getId(){
+  int getID(){
     return _id;
   }
 

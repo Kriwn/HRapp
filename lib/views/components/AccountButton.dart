@@ -33,7 +33,7 @@ class AccountButton extends StatelessWidget {
                   // Need to use controller to check Hr User
                   pageList.routeTo(context, "UserHome")
                 }
-              else if (functionName == "login")
+              else if (functionName == "goToSignIn")
                 {pageList.routeTo(context, "SignIn")}
               else if (functionName == "SignUp")
                 {pageList.routeTo(context, "SignUp")}

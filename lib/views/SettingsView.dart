@@ -63,16 +63,6 @@ class _SettingsState extends State<Settings> {
                           const SizedBox(
                             height: 40,
                           ),
-                          RowTextField(16, "K2D", FontWeight.bold, "Name",
-                              "Name", nameController),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          RowTextField(16, "K2D", FontWeight.bold, "Username",
-                              "Username", usernameController),
-                          const SizedBox(
-                            height: 20,
-                          ),
                           RowTextField(16, "K2D", FontWeight.bold, "E-Mail",
                               "E-Mail", emailController),
                           const SizedBox(
