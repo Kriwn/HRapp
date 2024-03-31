@@ -22,7 +22,7 @@ class User {
                 String? id, String? phone, String? url) {
                   username ?? _username;
                   email ?? _email;
-                  name ?? _Na
+                  name ?? _Name;
                   id ?? _departmentID;
                   phone ?? _phoneNo;
                   url ?? _urlImage;
@@ -34,7 +34,7 @@ class User {
                                      id ?? _departmentID, phone ?? _phoneNo, url ?? _urlImage);
                 }
 
-  User.fromJson(Map<String, Object> json){
+  User.fromJson(Map<String, Object?> json){
     _username = json['username'] as String;
     _Name  = json['Name'] as String;
     _email = json['Email'] as String;

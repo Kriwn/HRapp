@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
+import 'package:hr/controllers/SignInController.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -10,9 +11,15 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  String Path = "UserHome";
+
+  // Make Error message // 
+
+  String message = "";
   PageList pageList = PageList();
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +40,7 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
               AccountTextField(const Icon(Icons.person), 16, "WorkSans",
-                  FontWeight.bold, "Username", "Username", usernameController),
+                  FontWeight.bold, "Email", "Email", emailController),
               const SizedBox(
                 height: 20,
               ),
@@ -61,7 +68,13 @@ class _SignInState extends State<SignIn> {
                         "Sign in",
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () => {pageList.routeTo(context, "UserHome")}
+                      onPressed: () => {
+
+                        CheckLogin(emailController.text,passwordController.text,message);
+                        // if to change Path
+                        pageList.routeTo(context, Path)
+                        
+                        }
                   ),
                 ],
               ),
