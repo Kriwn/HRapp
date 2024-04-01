@@ -40,7 +40,7 @@ class _SignInState extends State<SignIn> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(360),
                 child: Image.asset(
-                  'assets/images/bigBig.png',
+                  'assets/images/logo.png',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -87,8 +87,10 @@ class _SignInState extends State<SignIn> {
                         signInResult = await CheckLogin(emailController.text, passwordController.text, message).CheckDepartment();
                         
                         if (signInResult == 1) {
+                          message = "";
                           Path = "HrHome";
                         } else if (signInResult == 0) {
+                          message = "";
                           Path = "UserHome";
                         } 
                         else if (signInResult == -1) {
@@ -97,7 +99,7 @@ class _SignInState extends State<SignIn> {
                           });
                         }else if (signInResult == -2)
                         {
-                            setState(() {
+                          setState(() {
                             message = "No internet connection";
                           });
                         }

@@ -37,6 +37,40 @@ class UserDB {
     return null;
   }
 
+  Future<String?> getPhoneNo(String userId) async {
+    try {
+      var snapshot = await _userRef.doc(userId).get();
+      if (snapshot.exists)
+      {
+        var userdata = snapshot.data();
+        if (userdata != null){
+          var user = userdata as User;
+          return user.getPhoneNo();
+        }
+      } 
+    } catch (e) {
+      print("Error get Phone No.");
+    }
+    return null;
+  }
+
+  Future<User?> getUser(String userId) async {
+    try {
+      var snapshot = await _userRef.doc(userId).get();
+      if (snapshot.exists)
+      {
+        var userdata = snapshot.data();
+        if (userdata != null){
+          var user = userdata as User;
+          return user;
+        }
+      } 
+    } catch (e) {
+      print("Error get Phone No.");
+    }
+    return null;
+  }
+
   getUserByEmail(String email) {
     return _userRef.where('Email', isEqualTo: email);
   }

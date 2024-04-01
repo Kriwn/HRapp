@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hr/models/user.dart';
+import 'package:hr/services/Auth.dart';
+import 'package:hr/services/UserDB.dart';
 import 'package:hr/views/components/IconPicture.dart';
 import 'package:hr/views/components/RowTextField.dart';
 
@@ -12,13 +15,26 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  UserDB userDB = UserDB();
+  late User user;
+  // TextEditingController emailController = TextEditingController();
+  // TextEditingController usernameController = TextEditingController();
+  // TextEditingController nameController = TextEditingController();
+  TextEditingController phoneNoController = TextEditingController();
+  String phoneNo = "";
+
   @override
   Widget build(BuildContext context) {
+    userDB.getUser(Auth().currentUser!.uid).then((value) => {
+      user = value!
+    });
     double screenHeight = MediaQuery.of(context).size.height;
-    // TextEditingController emailController = TextEditingController();
-    // TextEditingController usernameController = TextEditingController();
-    // TextEditingController nameController = TextEditingController();
-    TextEditingController phoneNoController = TextEditingController();
+    if(phoneNo == "") {
+      userDB.getPhoneNo(Auth().currentUser!.uid).then((value) => {
+       phoneNo = value ?? "",
+       phoneNoController.text = phoneNo
+      });
+    }
 
     @override
     void dispose() {
@@ -79,6 +95,13 @@ class _SettingsState extends State<Settings> {
                           const SizedBox(
                             height: 20,
                           ),
+                          FloatingActionButton.extended(
+                            label: const Text("Update"),
+                            onPressed: () {
+                              user.setPhoneNo(phoneNoController.text);
+                              userDB.updateUser(Auth().currentUser!.uid, user);
+                            }
+                          )
                         ],
                       )))
             ],
