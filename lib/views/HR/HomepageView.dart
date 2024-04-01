@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hr/controllers/PageList.dart';
+import 'package:hr/services/Auth.dart';
 import 'DepartmentView.dart';
 import 'NewemployeeView.dart';
 import 'SummaryView.dart';
@@ -13,6 +15,7 @@ class HrHomepage extends StatefulWidget {
 }
 
 class _HrHomepage extends State<HrHomepage> {
+  PageList pageList = PageList();
   int indextBottomNav = 0;
   List WidgetOption = [
     const SummaryList(),
@@ -24,15 +27,23 @@ class _HrHomepage extends State<HrHomepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Test"),
-          actions: [
-            IconPicture(50, 'assets/images/bigprk.png', "Settings"),
-          ],
-        ),
         backgroundColor: const Color.fromARGB(255, 247, 197, 186),
-        body: Center(
-          child: WidgetOption[indextBottomNav],
+        body: Column(
+          children: [
+              const SizedBox(height: 20,),
+              Row(
+                children: [
+                  IconButton(onPressed: (){
+                    Auth().signOut();
+                    pageList.routeTo(context, "SignIn");
+                  }, icon: const Icon(Icons.logout)),
+                  Spacer(),
+                  IconPicture(50, 'assets/images/bigprk.png', "Settings"),],
+                ),
+            Center(
+              child: WidgetOption[indextBottomNav],
+            ),
+          ],
         ),
         bottomNavigationBar: SafeArea(
           child: BottomNavigationBar(

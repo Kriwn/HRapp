@@ -18,6 +18,7 @@ class CheckLogin {
     bool result = await InternetConnection().hasInternetAccess;
 
     if (result) {
+      await Auth().signInWithEmailAndPassword(email: _emailController, password: _passwordController);
       try {
         String? department =
             await userDB.getDepartment(Auth().currentUser!.uid);
@@ -37,7 +38,7 @@ class CheckLogin {
         return -1;
       }
     } else {
-      return -2;
+      return -1;
     }
   }
 }
