@@ -37,8 +37,8 @@ class _SignUpState extends State<SignUp> {
   Future<void> createUserWithEmailAndPassword() async {
     try {
       await Auth().createUserWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text);
-      SignUpController().addData(usernameController.text, emailController.text, "", nameController.text, "none");
+          email: emailController.text.trim(), password: passwordController.text.trim());
+      SignUpController().addData(usernameController.text.trim(), emailController.text.trim(), "", nameController.text.trim(), "none");
     } on FirebaseException catch (e) {
       print("Cannot create account.");
       setState(() {
@@ -85,7 +85,7 @@ class _SignUpState extends State<SignUp> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  if (passwordController.text != confirmPasswordController.text) {
+                  if (passwordController.text.trim() != confirmPasswordController.text.trim()) {
                     setState(() {
                       wrongInput = "'Password' and 'Confirm Password' do not correct.";
                     });

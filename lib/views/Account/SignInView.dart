@@ -84,7 +84,7 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {
-                        signInResult = await CheckLogin(emailController.text, passwordController.text, message).CheckDepartment();
+                        signInResult = await CheckLogin(emailController.text.trim(), passwordController.text.trim(), message).CheckDepartment();
                         
                         if (signInResult == 1) {
                           message = "";

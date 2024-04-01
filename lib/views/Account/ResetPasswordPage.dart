@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr/controllers/ResetPasswordController.dart';
 import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
 
@@ -37,28 +38,6 @@ class _ResetPasswordState extends State<ResetPassword> {
                 AccountTextField(const Icon(Icons.mail), 16, "WorkSans",
                     FontWeight.bold, "E-Mail", "E-Mail", emailController),
                 const SizedBox(
-                  height: 20,
-                ),
-                AccountTextField(
-                    const Icon(Icons.lock),
-                    16,
-                    "WorkSans",
-                    FontWeight.bold,
-                    "Password",
-                    "Password",
-                    passwordController),
-                const SizedBox(
-                  height: 20,
-                ),
-                AccountTextField(
-                    const Icon(Icons.lock),
-                    16,
-                    "WorkSans",
-                    FontWeight.bold,
-                    "Confirm Password",
-                    "Confirm Password",
-                    confirmPasswordController),
-                const SizedBox(
                   height: 50,
                 ),
                 FloatingActionButton.extended(
@@ -68,7 +47,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () => {
-                      pageList.routeTo(context, "SignIn")
+                      Reset().PasswordReset(context, emailController.text.trim()),
+                      pageList.routeTo(context, "SignIn"),
                     }
                 ),
               ],
