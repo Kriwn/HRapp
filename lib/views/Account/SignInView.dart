@@ -70,10 +70,17 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () => {
 
-                        CheckLogin(emailController.text,passwordController.text,message);
+                        CheckLogin(emailController.text,passwordController.text,message).Check()
+                        // if (CheckLogin(emailController.text,passwordController.text,message).Check())
+                        // {
+                        //   Path = "HrHome"
+                        // }
+                        // else
+                        // {
+                        //   Path = "UserHome"
+                        // },
                         // if to change Path
-                        pageList.routeTo(context, Path)
-                        
+                        // pageList.routeTo(context, Path),                       
                         }
                   ),
                 ],

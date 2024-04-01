@@ -1,8 +1,10 @@
+import 'package:hr/services/UserDB.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hr/services/Auth.dart';
 import 'package:hr/views/Account/SignInView.dart';
+import 'package:hr/main.dart';
 
 // final listener = InternetConnection().onStatusChange.listen((InternetStatus status) {
 //   switch (status) {
@@ -15,30 +17,15 @@ import 'package:hr/views/Account/SignInView.dart';
 //   }
 // });
 
-
-// class SignInController extends StatefulWidget {
-//   const SignInController({super.key});
-
-//   @override
-//   State<SignInController> createState() => _SignInControllerState();
-// }
-
-// class _SignInControllerState extends State<SignInController> {
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SignIn();
-//   }
-// }
-
-
-
 class CheckLogin{
+
+  final UserDB userDB = UserDB();
 
   final String  _emailController;
   final String  _passwordController;
   late String message;
 
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instanceFor(app: app);
 
   CheckLogin(this._emailController,this._passwordController,this.message);
 
@@ -53,10 +40,18 @@ class CheckLogin{
   }
 
   // need To finish UserDB.dart 1st // 
+  void Check (){
+    signInWithEmailPassword();
 
-  // bool Check (){
-  //   signInWithEmailPassword();
-
-  //   if ()
-  // }
+    // Error to get Department
+    print(" asdsadasdasdsadassadddddddddddd ${userDB.getDepartment(Auth().currentUser!.uid)}");
+    // if (userDB.getDepartment(Auth().currentUser!.uid) == "HR")
+    // {
+    //   return true;
+    // }
+    // else{
+    //   return false;
+    // }
+  }
+  
 }
