@@ -58,6 +58,16 @@ class PageList {
     }
   }
 
+  void routeToData(context, String pageName, dynamic data){
+    var routePage = findPage(pageName);
+
+    if (routePage != null) {
+      Navigator.of(context).push(_createRouteData(routePage, data));
+    } else {
+      print("Page Not Found Error 404!");
+    }
+  }
+
   Route _createRoute(PageData routePage) {
     var pageToGo = routePage.page;
 
@@ -80,4 +90,28 @@ class PageList {
       },
     );
   }
+
+  Route _createRouteData(PageData routePage, dynamic data) {
+  var pageToGo = routePage.page;
+
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => pageToGo,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+    settings: RouteSettings(arguments: data),
+  );
+}
 }

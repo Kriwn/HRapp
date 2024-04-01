@@ -11,9 +11,9 @@ class DepartmentList<T extends Department> {
     _departments.remove(department);
   }
   
-  T? findByDepartmentId(int id) {
+  T? findByDepartmentName(String name) {
     for (var department in _departments) {
-      if (department.getID() == id) {
+      if (department.getName() == name) {
         return department;
       }
     }

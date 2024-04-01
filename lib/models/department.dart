@@ -1,28 +1,21 @@
 class Department {
-  late int _id; //PK
   late String _name;
 
-  Department({required int id,required String name}){
-    _id = id;
+  Department({required String name}){
     _name = name;
   }
 
-  // Getter
-  int getID(){
-    return _id;
+  Department.fromJson(Map<String, Object> json){
+    _name = json['name'] as String;
+  }
+
+  Map<String, Object> toJson(){
+    return {
+      'name' : _name
+    };
   }
 
   String getName(){
     return _name;
-  }
-
-  // Setter
-  void setID(int value){
-    _id = value;
-  }
-
-  void setName(String name)
-  {
-    _name = name;
   }
 }
