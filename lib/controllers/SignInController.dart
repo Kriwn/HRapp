@@ -13,16 +13,6 @@ class CheckLogin {
 
   CheckLogin(this._emailController, this._passwordController, this.message);
 
-  final listener =
-      InternetConnection().onStatusChange.listen((InternetStatus status) {
-    switch (status) {
-      case InternetStatus.connected:
-        break;
-      case InternetStatus.disconnected:
-        // The internet is now disconnected
-        break;
-    }
-  });
 
   Future<int> CheckDepartment() async {
     bool result = await InternetConnection().hasInternetAccess;
