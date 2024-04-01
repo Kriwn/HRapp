@@ -90,13 +90,19 @@ class _SignInState extends State<SignIn> {
                           Path = "HrHome";
                         } else if (signInResult == 0) {
                           Path = "UserHome";
-                        } else if (signInResult == -1) {
+                        } 
+                        else if (signInResult == -1) {
                           setState(() {
                             message = "Email or Password is wrong.";
                           });
+                        }else if (signInResult == -2)
+                        {
+                            setState(() {
+                            message = "No internet connection";
+                          });
                         }
 
-                        if (signInResult != -1) {
+                        if (signInResult != -1 && signInResult != -2) {
                           pageList.routeTo(context, Path);
                         }
                       }

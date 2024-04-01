@@ -68,7 +68,6 @@ class _ResetPasswordState extends State<ResetPassword> {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () => {
-                      if()
                       pageList.routeTo(context, "SignIn")
                     }
                 ),
