@@ -23,6 +23,7 @@ class _UserHomePageState extends State<UserHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 247, 197, 186),
       body: Column(
         children: [
           const SizedBox(

@@ -70,7 +70,7 @@ class _SignInState extends State<SignIn> {
                   FloatingActionButton.extended(
                       backgroundColor: Color.fromARGB(255, 30, 95, 116),
                       label: const Text(
-                        "Sign up",
+                        "Sign Up",
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () => {pageList.routeTo(context, "SignUp")}),
@@ -80,7 +80,7 @@ class _SignInState extends State<SignIn> {
                   FloatingActionButton.extended(
                       backgroundColor: Color.fromARGB(255, 30, 95, 116),
                       label: const Text(
-                        "Sign in",
+                        "Sign In",
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:hr/models/user.dart';
 import 'package:hr/services/Auth.dart';
 import 'package:hr/services/UserDB.dart';
@@ -17,9 +18,6 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   UserDB userDB = UserDB();
   late User user;
-  // TextEditingController emailController = TextEditingController();
-  // TextEditingController usernameController = TextEditingController();
-  // TextEditingController nameController = TextEditingController();
   TextEditingController phoneNoController = TextEditingController();
   String phoneNo = "";
 
@@ -53,7 +51,7 @@ class _SettingsState extends State<Settings> {
                 children: [
                   IconButton(
                       onPressed: () => {Navigator.pop(context)},
-                      icon: Icon(Icons.arrow_back_ios))
+                      icon: const Icon(Icons.arrow_back_ios))
                 ],
               ),
               const Text(
@@ -81,12 +79,15 @@ class _SettingsState extends State<Settings> {
                       height: 0.7 * screenHeight,
                       child: Column(
                         children: [
+                          // try change iconPicture to circleAvatar(+glowAnimate ) and clickable(to change image- use imagePicker)
+                          
+                          // CircleAvatar(
+                          //   child: button,
+                          // )
                           IconPicture(200, 'assets/images/bigprk.png', "S"),
                           const SizedBox(
                             height: 40,
                           ),
-                          // RowTextField(16, "K2D", FontWeight.bold, "E-Mail",
-                          //     "E-Mail", emailController),
                           const SizedBox(
                             height: 20,
                           ),
