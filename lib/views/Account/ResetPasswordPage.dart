@@ -16,6 +16,14 @@ class _ResetPasswordState extends State<ResetPassword> {
   TextEditingController confirmPasswordController = TextEditingController();
 
   @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 255, 232, 223),
@@ -56,10 +64,14 @@ class _ResetPasswordState extends State<ResetPassword> {
                 FloatingActionButton.extended(
                     backgroundColor: Color.fromARGB(255, 30, 95, 116),
                     label: const Text(
-                      "Sign in",
+                      "Reset",
                       style: TextStyle(color: Colors.white),
                     ),
-                    onPressed: () => {pageList.routeTo(context, "SignIn")}),
+                    onPressed: () => {
+                      if()
+                      pageList.routeTo(context, "SignIn")
+                    }
+                ),
               ],
             ),
           ),

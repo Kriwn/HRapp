@@ -20,6 +20,12 @@ class _SettingsState extends State<Settings> {
     // TextEditingController nameController = TextEditingController();
     TextEditingController phoneNoController = TextEditingController();
 
+    @override
+    void dispose() {
+      phoneNoController.dispose();
+      super.dispose();
+    }
+
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 247, 197, 186),
         body: SingleChildScrollView(

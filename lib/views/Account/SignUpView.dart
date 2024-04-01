@@ -24,6 +24,16 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    usernameController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   Future<void> createUserWithEmailAndPassword() async {
     try {
       await Auth().createUserWithEmailAndPassword(
@@ -65,7 +75,7 @@ class _SignUpState extends State<SignUp> {
               style: const TextStyle(
                   fontSize: 16,
                   fontFamily: "WorkSans",
-                  fontWeight: FontWeight.bold),
+                  color: Colors.red),
               ),
               const SizedBox(height: 50,),
               FloatingActionButton.extended(

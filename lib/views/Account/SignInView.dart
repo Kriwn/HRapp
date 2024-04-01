@@ -12,14 +12,19 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   String Path = "UserHome";
-
   // Make Error message // 
-
+  int signInResult = -1;
   String message = "";
   PageList pageList = PageList();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +52,17 @@ class _SignInState extends State<SignIn> {
               AccountTextField(const Icon(Icons.lock), 16, "WorkSans",
                   FontWeight.bold, "Password", "Password", passwordController),
               const SizedBox(
-                height: 30,
+                height: 10,
+              ),
+              Text(
+                message,
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontFamily: "WorkSans",
+                    color: Colors.red),
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -68,20 +83,23 @@ class _SignInState extends State<SignIn> {
                         "Sign in",
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () => {
-
-                        CheckLogin(emailController.text,passwordController.text,message).Check()
-                        // if (CheckLogin(emailController.text,passwordController.text,message).Check())
-                        // {
-                        //   Path = "HrHome"
-                        // }
-                        // else
-                        // {
-                        //   Path = "UserHome"
-                        // },
-                        // if to change Path
-                        // pageList.routeTo(context, Path),                       
+                      onPressed: () async {
+                        signInResult = await CheckLogin(emailController.text, passwordController.text, message).CheckDepartment();
+                        
+                        if (signInResult == 1) {
+                          Path = "HrHome";
+                        } else if (signInResult == 0) {
+                          Path = "UserHome";
+                        } else if (signInResult == -1) {
+                          setState(() {
+                            message = "Email or Password is wrong.";
+                          });
                         }
+
+                        if (signInResult != -1) {
+                          pageList.routeTo(context, Path);
+                        }
+                      }
                   ),
                 ],
               ),

@@ -33,25 +33,40 @@ class CheckLogin{
   Future<void> signInWithEmailPassword() async{
     try {
       await Auth().signInWithEmailAndPassword(email: _emailController, password: _passwordController);
-    }on FirebaseAuthException catch (e) {
-      print("not found");
+    } on FirebaseAuthException catch (e) {
+      print("Not found");
       message = e.message!;
     }
   }
 
   // need To finish UserDB.dart 1st // 
-  void Check (){
-    signInWithEmailPassword();
+  // void Check (){
+  //   signInWithEmailPassword();
 
-    // Error to get Department
-    print(" asdsadasdasdsadassadddddddddddd ${userDB.getDepartment(Auth().currentUser!.uid)}");
-    // if (userDB.getDepartment(Auth().currentUser!.uid) == "HR")
-    // {
-    //   return true;
-    // }
-    // else{
-    //   return false;
-    // }
+  //   print(userDB.getDepartment(Auth().currentUser!.uid));
+    
+  // }
+
+  Future<int> CheckDepartment() async {
+    try {
+      await signInWithEmailPassword();
+
+      String? department = await userDB.getDepartment(Auth().currentUser!.uid);
+      print(department);
+      
+      if (department != null) {
+        if(department == 'HR') {
+          return 1;
+        } else { 
+          return 0;
+        }
+      } else {
+        return -1;
+      }
+    } catch (e) {
+      print('Error during sign in: $e');
+      return -1;
+    }
   }
   
 }

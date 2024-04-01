@@ -35,7 +35,7 @@ class User {
                 }
 
   User.fromJson(Map<String, Object?> json){
-    _username = json['username'] as String;
+    _username = json['Username'] as String;
     _Name  = json['Name'] as String;
     _email = json['Email'] as String;
     _phoneNo = json['Phone'] as String;
@@ -46,7 +46,7 @@ class User {
 
   Map<String, Object> toJson(){
     return {
-      'username' : _username,
+      'Username' : _username,
       'Name' : _Name,
       'Email' : _email,
       'Phone' : _phoneNo,

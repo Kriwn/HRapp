@@ -20,18 +20,18 @@ class UserDB {
   //   return DepartmentList;
   // }
 
-  Future<String?> getDepartment(String userId) async{
+  Future<String?> getDepartment(String userId) async {
     try {
       var snapshot = await _userRef.doc(userId).get();
       if (snapshot.exists)
       {
         var userdata = snapshot.data();
         if (userdata != null){
-          var  user = userdata as User;
+          var user = userdata as User;
           return user.getDepartmentID();
         }
       } 
-    }catch (e){
+    } catch (e) {
       print("Error get Department");
     }
     return null;
@@ -53,8 +53,8 @@ class UserDB {
     _userRef.add(user);
   }
 
-  // void updateUserPhoneNoByEmail(String email, String phoneNo) async {
-  //   userCollection.doc(email).update(data)
-  // }
+  void updateUser(String userId, User user) async {
+    _userRef.doc(userId).update(user.toJson());
+  }
 
 }
