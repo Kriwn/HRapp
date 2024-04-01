@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hr/views/components/DepartmentListmaker.dart';
 
 class SummaryList extends StatelessWidget {
   const SummaryList({Key? key}) : super(key: key);
@@ -35,6 +36,10 @@ class SummaryList extends StatelessWidget {
             height: 0.7 * screenHeight,
             child:  ListView(
               // need some  Sumary department
+              children: [
+               DepatmentListMaker(name: "ASDASDAS",context: context,),
+               DepatmentListMaker(name: "TTTTTTTT",context: context,),
+              ],
             ),
           )
           )
