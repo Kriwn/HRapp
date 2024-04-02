@@ -15,11 +15,6 @@ class UserDB {
           toFirestore: (user, _) => user.toJson());
   }
 
-  // Stream<QuerySnapshot> getId(){
-  //   final DepartmentList = department.orderBy('ID',descending: false).snapshots();
-  //   return DepartmentList;
-  // }
-
   Future<String?> getDepartment(String userId) async {
     try {
       var snapshot = await _userRef.doc(userId).get();
@@ -50,6 +45,23 @@ class UserDB {
       } 
     } catch (e) {
       print("Error get Phone No.");
+    }
+    return null;
+  }
+
+  Future<String?> getUserName(String userId) async {
+    try {
+      var snapshot = await _userRef.doc(userId).get();
+      if (snapshot.exists)
+      {
+        var userdata = snapshot.data();
+        if (userdata != null){
+          var user = userdata as User;
+          return user.getName();
+        }
+      } 
+    } catch (e) {
+      print("Error get name");
     }
     return null;
   }
