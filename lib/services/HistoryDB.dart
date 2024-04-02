@@ -3,7 +3,6 @@ import 'package:hr/models/history.dart';
 import 'package:hr/main.dart';
 import 'package:hr/models/userRef.dart';
 import 'package:intl/intl.dart';
-import 'package:hr/models/user.dart';
 
 class HistoryDB {
   final userCollection =

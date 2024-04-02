@@ -1,12 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/PageList.dart';
 import 'package:hr/services/Auth.dart';
 import 'package:hr/views/User/ClockInView.dart';
 import 'package:hr/views/User/HistoryView.dart';
 import 'package:hr/views/components/IconPicture.dart';
-import 'package:hr/models/history.dart';
-import 'package:intl/intl.dart';
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({super.key});

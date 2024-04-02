@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hr/models/history.dart';
-import 'package:hr/services/Auth.dart';
 
 class UserRef {
   late CollectionReference _userRef;

@@ -11,7 +11,7 @@ class StatusUser extends StatefulWidget {
 }
 
 class _StatusUser extends State<StatusUser> {
-  Future<List<String>>? _UsernameList;
+  // Future<List<String>>? _UsernameList;
   
   final dynamic data;
   
@@ -26,7 +26,6 @@ class _StatusUser extends State<StatusUser> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     return  Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 197, 186),
       body: Column(

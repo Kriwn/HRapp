@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
 import 'package:hr/controllers/SignInController.dart';
-import 'package:intl/intl.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});

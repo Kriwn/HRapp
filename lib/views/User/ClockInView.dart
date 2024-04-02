@@ -53,7 +53,7 @@ class _ClockInState extends State<ClockIn> {
               Text(
                 topic,
                 style: const TextStyle(
-                  fontSize: 36,
+                  fontSize: 24,
                 ),
               ),
               const SizedBox(height: 20),
@@ -120,7 +120,6 @@ class _ClockInState extends State<ClockIn> {
                             buttonIcon = Icon(Icons.close_rounded, color: Colors.red, size: 250,);
                           });
                         }
-                        getLocation();
                       }, 
                       icon: buttonIcon,
                     ),
