@@ -86,7 +86,6 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () async {
                         signInResult = await CheckLogin(emailController.text.trim(), passwordController.text.trim(), message).CheckDepartment();
-                        print("kuykuykuy ${DateFormat.H().format(DateTime.now())}");
                         if (signInResult == 1) {
                           message = "";
                           Path = "HrHome";
