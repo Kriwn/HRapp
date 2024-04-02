@@ -30,7 +30,7 @@ class PageList {
 
     //HR 
     pageList.add(PageData("HrHome", const HrHomepage()));
-    pageList.add(PageData("NewEmployeeList", const NewEmployee()));
+    pageList.add(PageData("NewEmployeeList",NewEmployee()));
     pageList.add(PageData("Summary", SummaryList()));
     pageList.add(PageData("DepartmentList", DepartmentList()));
     

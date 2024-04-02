@@ -1,13 +1,16 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/PageList.dart';
+import 'package:hr/views/HR/AvailableView.dart';
+import 'package:hr/views/HR/StatusUserView.dart';
 
 class UsertListMaker extends StatelessWidget {
   final String name;
   
   PageList pageList = PageList();
 
-  UsertListMaker({Key? key, required this.name, required context}):super(key: key);
+  bool flag  =  false;
+
+  UsertListMaker({Key? key, required this.name, required this.flag,required context}):super(key: key);
 
 
   @override
@@ -16,8 +19,12 @@ class UsertListMaker extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(20, 7, 20, 7),
         child: GestureDetector(
           onTap: () {
-            // create page for it UserList
-            // pageList.routeToData(context, "User",name);
+            if (flag){ // Status
+            pageList.routeToData(context, "StatusUser", StatusUser(data: name,),name);
+            }
+            else {  // NewEmployee
+            pageList.routeToData(context, "AvailableUser", AvailableUser(data:name),name);
+            }
           },
       
       child: Container(

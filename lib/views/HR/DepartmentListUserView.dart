@@ -80,6 +80,7 @@ class _DepartmentListState extends State<DepartmentListUser> {
                     itemBuilder: (context, index) {
                       return UsertListMaker(
                         name: UserList[index],
+                        flag: true,
                         context: context,
                       );
                     },

@@ -4,7 +4,6 @@ import 'package:hr/main.dart';
 import 'package:hr/models/history.dart';
 import 'package:hr/services/Auth.dart';
 import 'package:hr/services/HistoryDB.dart';
-import 'package:hr/services/LocationService.dart';
 import 'package:hr/views/User/HistoryView.dart';
 import 'package:intl/intl.dart';
 import 'package:hr/controllers/ClockInController.dart';
@@ -94,7 +93,7 @@ class _ClockInState extends State<ClockIn> {
                     ),
                     IconButton(
                       onPressed: () async {
-                        // getLocation();
+                        getLocation();
                         clockInTimeCheck = clockInController.ClockInTimeCheck(now);
                         clockOutTimeCheck = clockInController.ClockOutTimeCheck(now);
                         if(clockInTimeCheck) {

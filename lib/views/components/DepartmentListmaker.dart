@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/PageList.dart';
-import 'package:hr/views/HR/DepartmentListUser.dart';
+import 'package:hr/views/HR/DepartmentListUserView.dart';
 
 class DepartmentListMaker extends StatelessWidget {
   final String name;

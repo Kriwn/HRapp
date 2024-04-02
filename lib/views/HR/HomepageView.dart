@@ -19,7 +19,7 @@ class _HrHomepage extends State<HrHomepage> {
   int indextBottomNav = 0;
   List WidgetOption = [
     SummaryList(),
-    const NewEmployee(),
+    NewEmployee(),
     DepartmentList(),
     const ClockIn(),
   ];
