@@ -50,6 +50,27 @@ class UserDB {
     return userNames;
   }
 
+  Stream<QuerySnapshot> getSnap(){
+    return _userRef.snapshots();
+  }
+
+  Future<User?> getUserByName(String name) async {
+    late final user;
+
+    try {
+      var snapshot = await _userRef.where('Name', isEqualTo: name).get();
+      snapshot.docs.forEach((doc) {
+        var userData = doc.data();
+        if (userData != null ) {
+          user = userData as User;
+        }
+      });
+    } catch (e) {
+      print("Error getting users by department ID: $e");
+    }
+    return user;
+  }
+
 
   Future<String?> getPhoneNo(String userId) async {
     try {
@@ -110,6 +131,22 @@ class UserDB {
     return _userRef;
   }
 
+  Future<User?> getAll(String userId) async {
+    try {
+      var snapshot = await _userRef.doc(userId).get();
+      if (snapshot.exists) {
+        var accountData = snapshot.data();
+        if (accountData != null) {
+          var account = accountData as User;
+          return account;
+        }
+      }
+    } catch (e) {
+      print("Error getting username: $e");
+    }
+    return null;
+  }
+
   void createUser(User user) async {
     _userRef.add(user);
   }
@@ -117,5 +154,17 @@ class UserDB {
   void updateUser(String userId, User user) async {
     _userRef.doc(userId).update(user.toJson());
   }
+
+  void addAccount(User user) async {
+    _userRef.add(user);
+  }
+
+void updateDepartment(String accountID, String department) {
+    getAll(accountID).then((value) => {
+      value?.setDepartment(department),
+      updateUser(accountID, value ?? User("NoUsername", "NoEmail"))
+    });
+  }
+
 
 }

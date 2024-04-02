@@ -6,7 +6,6 @@ class User {
   late String _email;
   late final String _username;
   late String _departmentID;
-  // late History _history;
   
 
   User(this._username, this. _email){
@@ -14,7 +13,6 @@ class User {
     _urlImage = "";
     _Name = "";
     _phoneNo = "";
-    // _history = null; dont know
   }
 
   User.withAll(String? username, String? email, String? name, 
@@ -93,6 +91,10 @@ class User {
 
   void setEmail(String newEmail) {
     _email = newEmail;
+  }
+
+  void setDepartment(String string){
+    _departmentID = string;
   }
 
 }
