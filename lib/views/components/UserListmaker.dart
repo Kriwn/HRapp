@@ -1,13 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/PageList.dart';
-import 'package:hr/views/HR/DepartmentListUser.dart';
 
-class DepartmentListMaker extends StatelessWidget {
+class UsertListMaker extends StatelessWidget {
   final String name;
   
   PageList pageList = PageList();
 
-  DepartmentListMaker({Key? key, required this.name, required context}):super(key: key);
+  UsertListMaker({Key? key, required this.name, required context}):super(key: key);
 
 
   @override
@@ -17,7 +17,7 @@ class DepartmentListMaker extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             // create page for it UserList
-            pageList.routeToData(context, "DepartmentListUser",DepartmentListUser(data: name,),name);
+            // pageList.routeToData(context, "User",name);
           },
       
       child: Container(

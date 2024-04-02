@@ -5,7 +5,7 @@ class Department {
     _name = name;
   }
 
-  Department.fromJson(Map<String, Object> json){
+  Department.fromJson(Map<String, dynamic> json){
     _name = json['name'] as String;
   }
 

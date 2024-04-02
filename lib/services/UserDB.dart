@@ -37,6 +37,25 @@ class UserDB {
     return null;
   }
 
+    Future<List<String>> getUsersByDepartmentId(String departmentId) async {
+    List<String> userNames = [];
+
+    try {
+      var snapshot = await _userRef.where('Department_ID', isEqualTo: departmentId).get();
+      snapshot.docs.forEach((doc) {
+        var userData = doc.data() as User;
+        if (userData != null ) {
+          userNames.add(userData.getName());
+        }
+      });
+    } catch (e) {
+      print("Error getting users by department ID: $e");
+    }
+
+    return userNames;
+  }
+
+
   Future<String?> getPhoneNo(String userId) async {
     try {
       var snapshot = await _userRef.doc(userId).get();
@@ -73,10 +92,6 @@ class UserDB {
 
   getUserByEmail(String email) {
     return _userRef.where('Email', isEqualTo: email);
-  }
-
-  getAvailableUsers() {
-    return _userRef.where('Department_ID', isEqualTo: 'none');
   }
 
   getUsers() {

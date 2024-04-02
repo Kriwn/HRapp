@@ -18,9 +18,9 @@ class _HrHomepage extends State<HrHomepage> {
   PageList pageList = PageList();
   int indextBottomNav = 0;
   List WidgetOption = [
-    const SummaryList(),
+    SummaryList(),
     const NewEmployee(),
-    const DepartmentList(),
+    DepartmentList(),
     const ClockIn(),
   ];
 

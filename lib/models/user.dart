@@ -1,4 +1,3 @@
-import 'package:hr/models/history.dart';
 
 class User {
   late String _urlImage;

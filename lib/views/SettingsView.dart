@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:hr/models/user.dart';
 import 'package:hr/services/Auth.dart';
 import 'package:hr/services/UserDB.dart';
-import 'package:hr/views/components/IconPicture.dart';
 import 'package:hr/views/components/RowTextField.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 

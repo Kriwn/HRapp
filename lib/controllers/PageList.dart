@@ -31,8 +31,8 @@ class PageList {
     //HR 
     pageList.add(PageData("HrHome", const HrHomepage()));
     pageList.add(PageData("NewEmployeeList", const NewEmployee()));
-    pageList.add(PageData("Summary", const SummaryList()));
-    pageList.add(PageData("DepartmentList", const DepartmentList()));
+    pageList.add(PageData("Summary", SummaryList()));
+    pageList.add(PageData("DepartmentList", DepartmentList()));
     
     //User
     pageList.add(PageData("UserHome", const UserHomePage()));
@@ -58,7 +58,8 @@ class PageList {
     }
   }
 
-  void routeToData(context, String pageName, dynamic data){
+  void routeToData(context, String pageName,dynamic function ,dynamic data){
+    pageList.add(PageData(pageName, function));
     var routePage = findPage(pageName);
 
     if (routePage != null) {

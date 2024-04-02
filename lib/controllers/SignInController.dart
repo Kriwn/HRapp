@@ -1,6 +1,5 @@
 import 'package:hr/services/UserDB.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hr/services/Auth.dart';
 
 class CheckLogin {
@@ -25,7 +24,7 @@ class CheckLogin {
         print(department);
 
         if (department != null) {
-          if (department == 'HR') {
+          if (department == 'Hr') {
             return 1;
           } else {
             return 0;

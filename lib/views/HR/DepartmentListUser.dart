@@ -1,32 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/departmentcontroller.dart';
-import 'package:hr/views/components/DepartmentListmaker.dart';
+import 'package:hr/views/components/UserListmaker.dart';
 
 
-class DepartmentList extends StatefulWidget {
+class DepartmentListUser extends StatefulWidget {
+  final dynamic data;
+
+  DepartmentListUser({required this.data});
+
   @override
-  _DepartmentListState createState() => _DepartmentListState();
-}
-
-class _DepartmentListState extends State<DepartmentList> {
-  Future<List<String>>? _departmentIDs;
-
-@override
-void initState() {
-  super.initState();
-  _departmentIDs = DepartmentController().getId();
+  _DepartmentListState createState() => _DepartmentListState(data: data);
   
 }
+
+class _DepartmentListState extends State<DepartmentListUser> {
+  Future<List<String>>? _UsernameList;
+  
+  final dynamic data;
+  
+  _DepartmentListState({required this.data});
+
+  @override
+  void initState(){
+    super.initState();
+    _UsernameList = DepartmentController().getNameByDepartment(data);
+  }
+  
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return  Scaffold(
+      backgroundColor: const Color.fromARGB(255, 247, 197, 186),
+      body: Column(
       children: [
-        const Text(
-          "Department",
-          style: TextStyle(
+        const SizedBox(height: 20,),
+        Row(
+          children: [
+            IconButton(onPressed: (){
+              Navigator.of(context).pop();
+                  }, icon: const BackButton(),
+                  iconSize: 30,),
+          ],
+        ),
+          Text(
+          widget.data.toString(),
+          style: const TextStyle(
             fontSize: 20,
           ),
         ),
@@ -48,19 +67,19 @@ void initState() {
                 ]),
             height: 0.7 * screenHeight,
             child: FutureBuilder<List<String>>(
-              future: _departmentIDs,
+              future: _UsernameList,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else {
-                  List<String> departmentIDs = snapshot.data ?? [];
+                  List<String> UserList = snapshot.data ?? [];
                   return ListView.builder(
-                    itemCount: departmentIDs.length,
+                    itemCount: UserList.length,
                     itemBuilder: (context, index) {
-                      return DepartmentListMaker(
-                        name: departmentIDs[index],
+                      return UsertListMaker(
+                        name: UserList[index],
                         context: context,
                       );
                     },
@@ -71,7 +90,7 @@ void initState() {
           ),
         ),
       ],
+      )
     );
   }
 }
-
