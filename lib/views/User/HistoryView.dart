@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class History extends StatefulWidget {
-  const History({super.key});
+class HistoryView extends StatefulWidget {
+  const HistoryView({super.key});
 
   @override
-  State<History> createState() => _HistoryState();
+  State<HistoryView> createState() => _HistoryViewState();
 }
 
-class _HistoryState extends State<History> {
+class _HistoryViewState extends State<HistoryView> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;

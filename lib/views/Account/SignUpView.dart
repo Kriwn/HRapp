@@ -61,18 +61,21 @@ class _SignUpState extends State<SignUp> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    IconButton(
-                      onPressed: () => {Navigator.pop(context)},
-                      icon: const Icon(Icons.arrow_back_ios)
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        onPressed: () => {Navigator.pop(context)},
+                        icon: const Icon(Icons.arrow_back_ios)
+                      ),
+                    ],
+                ),
               ),
               AccountTextField(const Icon(Icons.mail), 16, "WorkSans", FontWeight.bold, "E-Mail", "E-Mail", emailController),
               const SizedBox(height: 20,),
-              AccountTextField(const Icon(Icons.book), 16, "WorkSans", FontWeight.bold, "Name", "Name", nameController),
+              AccountTextField(const Icon(Icons.book), 16, "WorkSans", FontWeight.bold, "Name", "Firstname Lastname", nameController),
               const SizedBox(height: 20,),
               AccountTextField(const Icon(Icons.person), 16, "WorkSans", FontWeight.bold, "Username", "Username", usernameController),
               const SizedBox(height: 20,),

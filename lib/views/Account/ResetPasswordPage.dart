@@ -30,7 +30,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         backgroundColor: const Color.fromARGB(255, 255, 232, 223),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
+            padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

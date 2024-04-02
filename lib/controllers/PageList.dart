@@ -25,7 +25,7 @@ class PageList {
 
     //User And Hr History
     pageList.add(PageData("Settings", const Settings()));
-    pageList.add(PageData("ClockIn", const ClockIn()));
+    pageList.add(PageData("ClockIn", ClockIn()));
 
 
     //HR 
@@ -36,7 +36,7 @@ class PageList {
     
     //User
     pageList.add(PageData("UserHome", const UserHomePage()));
-    pageList.add(PageData("History", const History()));    
+    pageList.add(PageData("History", const HistoryView()));    
   }
 
   PageData? findPage(String pageName) {

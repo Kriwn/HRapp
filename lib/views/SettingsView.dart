@@ -20,20 +20,26 @@ class _SettingsState extends State<Settings> {
   late User user;
   TextEditingController phoneNoController = TextEditingController();
   String phoneNo = "";
+  String name = "";
 
   @override
   Widget build(BuildContext context) {
-    userDB.getUser(Auth().currentUser!.uid).then((value) => {
-      user = value!
-    });
     double screenHeight = MediaQuery.of(context).size.height;
+    userDB.getUser(Auth().currentUser!.uid).then((value) => {
+      user = value!,
+    });
+    if(name == "") {
+      userDB.getUserName(Auth().currentUser!.uid).then((value) => {
+       name = value ?? "",
+      });
+    }
     if(phoneNo == "") {
       userDB.getPhoneNo(Auth().currentUser!.uid).then((value) => {
        phoneNo = value ?? "",
        phoneNoController.text = phoneNo
       });
     }
-
+    
     @override
     void dispose() {
       phoneNoController.dispose();
@@ -46,20 +52,18 @@ class _SettingsState extends State<Settings> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(
-                      onPressed: () => {Navigator.pop(context)},
-                      icon: const Icon(Icons.arrow_back_ios))
-                ],
-              ),
-              const Text(
-                "Settings",
-                style: TextStyle(
-                  fontSize: 20,
+              Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                        onPressed: () => {Navigator.pop(context)},
+                        icon: const Icon(Icons.arrow_back_ios))
+                  ],
                 ),
               ),
+              const Text("Settings", style: TextStyle(fontSize: 20, fontFamily: "K2D", fontWeight: FontWeight.bold),),
               const SizedBox(height: 20),
               Padding(
                   padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
@@ -79,8 +83,10 @@ class _SettingsState extends State<Settings> {
                       height: 0.7 * screenHeight,
                       child: Column(
                         children: [
-                          const SizedBox(height: 80,),
-                          // try change iconPicture to circleAvatar(+glowAnimate ) and clickable(to change image- use imagePicker)
+                          const SizedBox(height: 50,),
+                          Text(name, style: const TextStyle(fontSize: 16, fontFamily: "K2D", fontWeight: FontWeight.bold),),
+                          const SizedBox(height: 20,),
+                          // try change iconPicture to circleAvatar(+glowAnimate ) and clickable(to change image - use imagePicker)
                           AvatarGlow(
                             startDelay: const Duration(milliseconds: 1000),
                             glowColor: const Color.fromARGB(255, 245, 187, 170),
