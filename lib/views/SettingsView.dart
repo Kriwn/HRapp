@@ -5,6 +5,7 @@ import 'package:hr/services/Auth.dart';
 import 'package:hr/services/UserDB.dart';
 import 'package:hr/views/components/IconPicture.dart';
 import 'package:hr/views/components/RowTextField.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 
 // Overflow keyboard //
 
@@ -79,12 +80,28 @@ class _SettingsState extends State<Settings> {
                       height: 0.7 * screenHeight,
                       child: Column(
                         children: [
+                          const SizedBox(height: 80,),
                           // try change iconPicture to circleAvatar(+glowAnimate ) and clickable(to change image- use imagePicker)
-                          
+                          AvatarGlow(
+                            startDelay: const Duration(milliseconds: 1000),
+                            glowColor: const Color.fromARGB(255, 245, 187, 170),
+                            glowShape: BoxShape.circle,
+                            // animate: _animate,
+                            curve: Curves.bounceInOut,
+                            child: const Material(
+                              elevation: 16.0,
+                              shape: CircleBorder(),
+                              color: Colors.transparent,
+                              child: CircleAvatar(
+                                backgroundImage: AssetImage('assets/images/bigprk.png'),
+                                radius: 100.0,
+                              ),
+                            ),
+                          ),
                           // CircleAvatar(
                           //   child: button,
                           // )
-                          IconPicture(200, 'assets/images/bigprk.png', "S"),
+                          // IconPicture(200, 'assets/images/bigprk.png', "S"),
                           const SizedBox(
                             height: 40,
                           ),

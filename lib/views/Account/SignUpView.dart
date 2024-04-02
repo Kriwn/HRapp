@@ -6,6 +6,7 @@ import 'package:hr/controllers/PageList.dart';
 import 'package:hr/services/Auth.dart';
 
 
+
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
@@ -53,13 +54,22 @@ class _SignUpState extends State<SignUp> {
       backgroundColor: const Color.fromARGB(255, 255, 232, 223),
       body: SingleChildScrollView( 
       child:Padding(
-        padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
+        padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
         child: Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () => {Navigator.pop(context)},
+                      icon: const Icon(Icons.arrow_back_ios)
+                    ),
+                  ],
+              ),
               AccountTextField(const Icon(Icons.mail), 16, "WorkSans", FontWeight.bold, "E-Mail", "E-Mail", emailController),
               const SizedBox(height: 20,),
               AccountTextField(const Icon(Icons.book), 16, "WorkSans", FontWeight.bold, "Name", "Name", nameController),
