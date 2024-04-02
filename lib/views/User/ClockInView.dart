@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:hr/main.dart';
 import 'package:hr/models/history.dart';
 import 'package:hr/services/Auth.dart';
-import 'package:hr/services/HistoryDB.dart';
-import 'package:hr/views/User/HistoryView.dart';
 import 'package:intl/intl.dart';
 import 'package:hr/controllers/ClockInController.dart';
 
@@ -21,9 +20,10 @@ class _ClockInState extends State<ClockIn> {
   DateTime now = DateTime.now();
   late bool clockInTimeCheck;
   late bool clockOutTimeCheck;
-  late String todayClockIn;
+  String todayClockIn = "";
   String nowStr = "";
   String topic = "Clock In";
+  Icon buttonIcon = Icon(Icons.check_circle, color: Colors.green, size: 250,);
   
   @override
   Widget build(BuildContext context) {
@@ -41,12 +41,11 @@ class _ClockInState extends State<ClockIn> {
       builder: (context, snapshot) {
         List historyList = snapshot.data?.docs ?? [];
           for(var i in historyList) {
-            if(i.id == DateFormat("dd-MMMM-yyyy").format(DateTime.now())) {
-              History history = History.fromJson(i.data());
+            History history = History.fromJson(i.data());
+            if(i.id == DateFormat("dd-MMMM-yyyy").format(DateTime.now()) && history.getClockIn() != "") {
               print("${i.id} => ${history.getClockIn()}");
               todayClockIn = history.getClockIn();
             }
-            
           }
         return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -91,22 +90,39 @@ class _ClockInState extends State<ClockIn> {
                         );
                       }
                     ),
+                    
                     IconButton(
                       onPressed: () async {
-                        getLocation();
-                        clockInTimeCheck = clockInController.ClockInTimeCheck(now);
-                        clockOutTimeCheck = clockInController.ClockOutTimeCheck(now);
-                        if(clockInTimeCheck) {
-                          clockInController.ClockInFunc(userId, now);
-                        } else if(clockOutTimeCheck) {
-                          clockInController.ClockOutFunc(userId, now, todayClockIn);
+                        Position position = await getLocation();
+
+                        // Latitude(workplace), Longitude(worldplace), Latitude(current), Longitude(current), 
+                        double distance = DistanceCalculator.calculateDistance(13.850265866144003, 100.57115897393285, position.latitude, position.longitude);
+                        
+                        if(distance <= 600) {
+                          clockInTimeCheck = clockInController.ClockInTimeCheck(now);
+                          clockOutTimeCheck = clockInController.ClockOutTimeCheck(now);
+                          if(clockInTimeCheck) {
+                            clockInController.ClockInFunc(userId, now);
+                          } else if(clockOutTimeCheck && todayClockIn == "") {
+                            setState(() {
+                              topic = "Can't Clock Out due to no Clock In";
+                              buttonIcon = Icon(Icons.close_rounded, color: Colors.red, size: 250,);
+                            });
+                          } else if(clockOutTimeCheck) {
+                            clockInController.ClockOutFunc(userId, now, todayClockIn);
+                          }
+                          setState(() {
+                            nowStr = DateFormat.Hm().format(now);
+                          });
+                        } else {
+                          setState(() {
+                            topic = "You are not in work place area.";
+                            buttonIcon = Icon(Icons.close_rounded, color: Colors.red, size: 250,);
+                          });
                         }
-                        setState(() {
-                          nowStr = DateFormat.Hm().format(now);
-                        });
-        
+                        getLocation();
                       }, 
-                      icon: const Icon(Icons.check_circle, color: Colors.green, size: 250,),
+                      icon: buttonIcon,
                     ),
                     // Can use device's dateTime to check due to check internet connection already(if change device's dateTime = can not use internet)
         

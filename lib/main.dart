@@ -4,12 +4,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hr/firebase_options.dart';
 import 'views/Account/SignInView.dart';
-
 import 'package:geolocator/geolocator.dart';
 
-void getLocation() async {
+Future<Position> getLocation() async {
   Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.medium);
-  print(position);
+  return position;
 }
 
 late final FirebaseApp app;

@@ -8,6 +8,8 @@ class HistoryView extends StatefulWidget {
 }
 
 class _HistoryViewState extends State<HistoryView> {
+  String topic = "History";
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -15,9 +17,9 @@ class _HistoryViewState extends State<HistoryView> {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            "Settings",
-            style: TextStyle(
+          Text(
+            topic,
+            style: const TextStyle(
               fontSize: 20,
             ),
           ),
