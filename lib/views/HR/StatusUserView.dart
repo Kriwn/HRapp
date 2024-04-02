@@ -13,7 +13,7 @@ class StatusUser extends StatefulWidget {
 }
 
 class _StatusUser extends State<StatusUser> {
-  Future<List<String>>? _UsernameList;
+  // Future<List<String>>? _UsernameList;
   
   final dynamic data;
   

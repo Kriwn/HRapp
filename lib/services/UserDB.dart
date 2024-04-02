@@ -39,9 +39,7 @@ class UserDB {
       var snapshot = await _userRef.where('Department_ID', isEqualTo: departmentId).get();
       snapshot.docs.forEach((doc) {
         var userData = doc.data() as User;
-        if (userData != null ) {
-          userNames.add(userData.getName());
-        }
+        userNames.add(userData.getName());
       });
     } catch (e) {
       print("Error getting users by department ID: $e");
