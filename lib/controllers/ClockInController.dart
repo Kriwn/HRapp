@@ -6,9 +6,9 @@ import 'package:intl/intl.dart';
 class ClockInOut {
 
   bool ClockInTimeCheck(DateTime dateTime) {
-    int timeHr = int.parse(DateFormat("hh").format(dateTime));
-    int timeMin = int.parse(DateFormat("mm").format(dateTime));
-    if(5 >= timeHr && timeHr <= 9) {
+    int timeHr = int.parse(DateFormat.H().format(dateTime));
+    int timeMin = int.parse(DateFormat.m().format(dateTime));
+    if(timeHr >= 5 && timeHr <= 9) {
       if(timeHr == 9 && timeMin > 0) {
         return false;
       }
@@ -19,9 +19,9 @@ class ClockInOut {
   }
 
   bool ClockOutTimeCheck(DateTime dateTime) {
-    int timeHr = int.parse(DateFormat("hh").format(dateTime));
-    int timeMin = int.parse(DateFormat("mm").format(dateTime));
-    if(16 >= timeHr && timeHr <= 23) {
+    int timeHr = int.parse(DateFormat.H().format(dateTime));
+    int timeMin = int.parse(DateFormat.m().format(dateTime));
+    if(timeHr >= 16 && timeHr <= 23) {
       if(timeHr == 16 && timeMin < 30) {
         return false;
       }

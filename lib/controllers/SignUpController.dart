@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:hr/services/Auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hr/main.dart';
-import 'package:hr/models/user.dart';
+import 'package:intl/intl.dart';
 
 class SignUpController {
   var collection = FirebaseFirestore.instanceFor(app: app).collection("User");
@@ -19,5 +16,10 @@ class SignUpController {
       "Department_ID" : departmentID,
     };
     collection.doc(auth.currentUser!.uid).set(data1);
+    collection.doc(auth.currentUser!.uid)
+    .collection("History")
+    .doc(DateFormat("dd-MMMM-yyyy").format(DateTime.now()))
+    .set({
+    });
   }
 }

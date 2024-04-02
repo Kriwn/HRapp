@@ -25,7 +25,7 @@ class CheckLogin {
         print(department);
 
         if (department != null) {
-          if (department == 'HR') {
+          if (department == 'Hr') {
             return 1;
           } else {
             return 0;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr/views/components/AccountTextField.dart';
 import 'package:hr/controllers/PageList.dart';
 import 'package:hr/controllers/SignInController.dart';
+import 'package:intl/intl.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -85,7 +86,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () async {
                         signInResult = await CheckLogin(emailController.text.trim(), passwordController.text.trim(), message).CheckDepartment();
-                        
+                        print("kuykuykuy ${DateFormat.H().format(DateTime.now())}");
                         if (signInResult == 1) {
                           message = "";
                           Path = "HrHome";

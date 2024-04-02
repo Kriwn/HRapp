@@ -4,7 +4,6 @@ import 'package:hr/main.dart';
 import 'package:hr/models/history.dart';
 import 'package:hr/services/Auth.dart';
 import 'package:hr/services/HistoryDB.dart';
-import 'package:hr/services/LocationService.dart';
 import 'package:hr/views/User/HistoryView.dart';
 import 'package:intl/intl.dart';
 import 'package:hr/controllers/ClockInController.dart';
@@ -22,9 +21,10 @@ class _ClockInState extends State<ClockIn> {
   DateTime now = DateTime.now();
   late bool clockInTimeCheck;
   late bool clockOutTimeCheck;
-  late String todayClockIn;
+  String todayClockIn = "";
   String nowStr = "";
   String topic = "Clock In";
+  Icon buttonIcon = Icon(Icons.check_circle, color: Colors.green, size: 250,);
   
   @override
   Widget build(BuildContext context) {
@@ -42,12 +42,11 @@ class _ClockInState extends State<ClockIn> {
       builder: (context, snapshot) {
         List historyList = snapshot.data?.docs ?? [];
           for(var i in historyList) {
-            if(i.id == DateFormat("dd-MMMM-yyyy").format(DateTime.now())) {
-              History history = History.fromJson(i.data());
+            History history = History.fromJson(i.data());
+            if(i.id == DateFormat("dd-MMMM-yyyy").format(DateTime.now()) && history.getClockIn() != "") {
               print("${i.id} => ${history.getClockIn()}");
               todayClockIn = history.getClockIn();
             }
-            
           }
         return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -92,13 +91,20 @@ class _ClockInState extends State<ClockIn> {
                         );
                       }
                     ),
+                    
                     IconButton(
                       onPressed: () async {
-                        // getLocation();
+                        getLocation();
                         clockInTimeCheck = clockInController.ClockInTimeCheck(now);
                         clockOutTimeCheck = clockInController.ClockOutTimeCheck(now);
+                        // print("clockInkuykuykuy : ${clockInTimeCheck}\nclockoutkuykuy : ${clockOutTimeCheck}\ntoday clockIN kuykuy : ${todayClockIn}");
                         if(clockInTimeCheck) {
                           clockInController.ClockInFunc(userId, now);
+                        } else if(clockOutTimeCheck && todayClockIn == "") {
+                          setState(() {
+                            topic = "Can't Clock Out due to no Clock In";
+                            buttonIcon = Icon(Icons.close_rounded, color: Colors.red, size: 250,);
+                        });
                         } else if(clockOutTimeCheck) {
                           clockInController.ClockOutFunc(userId, now, todayClockIn);
                         }
@@ -107,7 +113,7 @@ class _ClockInState extends State<ClockIn> {
                         });
         
                       }, 
-                      icon: const Icon(Icons.check_circle, color: Colors.green, size: 250,),
+                      icon: buttonIcon,
                     ),
                     // Can use device's dateTime to check due to check internet connection already(if change device's dateTime = can not use internet)
         
