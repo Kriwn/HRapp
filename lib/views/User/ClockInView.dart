@@ -97,7 +97,7 @@ class _ClockInState extends State<ClockIn> {
 
                         // Latitude(workplace), Longitude(worldplace), Latitude(current), Longitude(current), 
                         double distance = DistanceCalculator.calculateDistance(13.850265866144003, 100.57115897393285, position.latitude, position.longitude);
-                        
+                        print(distance);
                         if(distance <= 600) {
                           clockInTimeCheck = clockInController.ClockInTimeCheck(now);
                           clockOutTimeCheck = clockInController.ClockOutTimeCheck(now);
@@ -110,6 +110,11 @@ class _ClockInState extends State<ClockIn> {
                             });
                           } else if(clockOutTimeCheck) {
                             clockInController.ClockOutFunc(userId, now, todayClockIn);
+                          } else {
+                            setState(() {
+                              topic = "You are not Clock In/Out time";
+                              buttonIcon = Icon(Icons.close_rounded, color: Colors.red, size: 250,);
+                            });
                           }
                           setState(() {
                             nowStr = DateFormat.Hm().format(now);
