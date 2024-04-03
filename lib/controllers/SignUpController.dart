@@ -12,7 +12,7 @@ class SignUpController {
       "Email": email,
       "Phone": phone,
       "Name":  name,
-      "URL_Image" : "",
+      "URL_Image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bsppqvO4psg9azdZhSloO4mioLo-z5yl_IJO1In9Uw&s",
       "Department_ID" : departmentID,
     };
     collection.doc(auth.currentUser!.uid).set(data1);
@@ -20,6 +20,8 @@ class SignUpController {
     .collection("History")
     .doc(DateFormat("dd-MMMM-yyyy").format(DateTime.now()))
     .set({
+      'ClockIn': "",
+      'ClockOut': "",
     });
   }
 }
