@@ -17,7 +17,7 @@ class IconPicture extends StatelessWidget {
         height: MediaQuery.of(context).size.width * 0.080,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(360),
-          child: Image.asset(
+          child: Image.network(
             imagePath,
             fit: BoxFit.cover,
           ),

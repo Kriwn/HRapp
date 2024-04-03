@@ -21,13 +21,24 @@ class _SettingsState extends State<Settings> {
   TextEditingController phoneNoController = TextEditingController();
   String phoneNo = "";
   String name = "";
+  String url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bsppqvO4psg9azdZhSloO4mioLo-z5yl_IJO1In9Uw&s";
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    if(url == "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bsppqvO4psg9azdZhSloO4mioLo-z5yl_IJO1In9Uw&s"){
+    UserDB().getAll(Auth().currentUser!.uid).then((value) => 
+    setState(() {
+      url = value?.getUrlImage() ?? "";
+    })
+  
+    ,);
+    };
+
     userDB.getUser(Auth().currentUser!.uid).then((value) => {
       user = value!,
     });
+
     if(name == "") {
       userDB.getUserName(Auth().currentUser!.uid).then((value) => {
        name = value ?? "",
@@ -93,12 +104,13 @@ class _SettingsState extends State<Settings> {
                             glowShape: BoxShape.circle,
                             // animate: _animate,
                             curve: Curves.bounceInOut,
-                            child: const Material(
+                            child: Material(
                               elevation: 16.0,
-                              shape: CircleBorder(),
+                              shape: const CircleBorder(),
                               color: Colors.transparent,
                               child: CircleAvatar(
-                                backgroundImage: AssetImage('assets/images/bigprk.png'),
+                                backgroundImage: NetworkImage(url),
+                                backgroundColor: Colors.transparent,
                                 radius: 100.0,
                               ),
                             ),

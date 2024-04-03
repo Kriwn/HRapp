@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/PageList.dart';
 import 'package:hr/services/Auth.dart';
+import 'package:hr/services/UserDB.dart';
 import 'package:hr/views/User/ClockInView.dart';
 import 'package:hr/views/User/HistoryView.dart';
 import 'package:hr/views/components/IconPicture.dart';
@@ -21,9 +22,19 @@ class _UserHomePageState extends State<UserHomePage> {
     const ClockIn(),
     const HistoryView(),
   ];
+  String url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bsppqvO4psg9azdZhSloO4mioLo-z5yl_IJO1In9Uw&s";
 
   @override
   Widget build(BuildContext context) {
+    if(url == "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bsppqvO4psg9azdZhSloO4mioLo-z5yl_IJO1In9Uw&s"){
+    UserDB().getAll(Auth().currentUser!.uid).then((value) => 
+    setState(() {
+      url = value?.getUrlImage() ?? "";
+    })
+  
+    ,);
+    }
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 197, 186),
       body: Padding(
@@ -39,7 +50,7 @@ class _UserHomePageState extends State<UserHomePage> {
                     },
                     icon: const Icon(Icons.logout)),
                 const Spacer(),
-                IconPicture(50, 'assets/images/bigprk.png', "Settings"),
+                IconPicture(50, url, "Settings"),
               ],
             ),
             Center(

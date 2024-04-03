@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr/controllers/PageList.dart';
 import 'package:hr/services/Auth.dart';
+import 'package:hr/services/UserDB.dart';
 import 'DepartmentView.dart';
 import 'NewemployeeView.dart';
 import 'SummaryView.dart';
@@ -23,9 +24,19 @@ class _HrHomepage extends State<HrHomepage> {
     DepartmentList(),
     const ClockIn(),
   ];
+  String url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bsppqvO4psg9azdZhSloO4mioLo-z5yl_IJO1In9Uw&s";
 
   @override
   Widget build(BuildContext context) {
+    if(url == "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bsppqvO4psg9azdZhSloO4mioLo-z5yl_IJO1In9Uw&s"){
+    UserDB().getAll(Auth().currentUser!.uid).then((value) => 
+    setState(() {
+      url = value?.getUrlImage() ?? "";
+    })
+  
+    ,);
+    }
+    
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 247, 197, 186),
         body: Column(
@@ -38,7 +49,7 @@ class _HrHomepage extends State<HrHomepage> {
                     pageList.routeTo(context, "SignIn");
                   }, icon: const Icon(Icons.logout)),
                   Spacer(),
-                  IconPicture(50, 'assets/images/bigprk.png', "Settings"),],
+                  IconPicture(50, url, "Settings"),],
                 ),
             Center(
               child: WidgetOption[indextBottomNav],
